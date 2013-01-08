@@ -1,0 +1,74 @@
+Aca esta bastante particular para Lilliput, pero bueno hay que modificar un poquito y lo esta haciendo bien
+
+
+
+enum disparo{ COLISIONA, ERRA, INTERIOR };
+
+//ColDist de -1 significa que no colisiono, en su defecto tiene la distancia al choque
+int CircleIntersection(double P0[],double ang,Barco bar,double& ColDist)
+	{
+	ColDist=-1;
+
+	double d[2];
+	double P1[2];
+	double RadAng = ang*PI/180;
+	//Posicion de fin del disparo, si fuese un rayo no tendria pos de fin
+	P1[0]=P0[0]+cos(RadAng)*2000;
+	P1[1]=P0[1]+sin(RadAng)*2000;
+	//Direccion del rayo
+	d[0] = P1[0]-P0[0];
+	d[1] = P1[1]-P0[1];
+	
+	double dim = sqrt(d[0]*d[0]+d[1]*d[1]);
+	d[0]=d[0]/dim;
+	d[1]=d[1]/dim;
+
+	double Center[2];
+	Center[0]=bar.PosX;
+	Center[1]=bar.PosY;
+	
+	//vector del punto de salida al centro del circulo
+	double e[2];
+	e[0] = Center[0]-P0[0];
+	e[1] = Center[1]-P0[1];
+	
+	double eLen = sqrt(e[0]*e[0]+e[1]*e[1]);
+
+	if( eLen < bar.Radio )
+		{
+		//Enotnces la salida del rayo esta dentro de la esfera
+		return INTERIOR;
+		}
+
+	double aLen= e[0]*d[0]+e[1]*d[1];//producto punto: e*d		Notar que d es unitario!
+	double dec= bar.Radio*bar.Radio-eLen*eLen+aLen*aLen;
+
+	if( dec < 0 )
+		{
+		//El rayo no intersecta la esfera
+		return ERRA;
+		}
+
+	double t= aLen - sqrt(dec);//t es el parametro del rayo donde intersecta
+	
+	if( t > 2000 )
+		{
+		//No llega a intersectar, no da el alcanze
+		return ERRA;
+		}
+
+
+			////Punto de interseccion
+			//D3DXVECTOR3 IntPos = P0aux + d*t;
+
+			//		//regla de seguridad, si esta fuera de la esfera pero dice que intersecta, luego salgo
+			//		float dist = D3DXVec3Length(&(IntPos-Center));
+			//		if( dist > (Radius+0.001) )
+			//			{
+			//			ReleaseDC(hMainWnd,hDC);
+			//			exit(0);
+			//			}
+
+	ColDist=t;
+	return COLISIONA;
+	}

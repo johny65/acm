@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<HTML>
+<HEAD>
+        <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+        <META NAME="author" CONTENT="Isaac W. Traxler">
+        <META NAME="keywords" CONTENT="Isaac W. Traxler,  2001 ACM South Central Regional Programming Contest, LSU ">
+        <META NAME="description" CONTENT="This is the home page for the 2001 South Central USA Regional Programming Contest">
+        <META NAME="resource-type" CONTENT="document">
+        <META NAME="distribution" CONTENT="Global">
+        <STYLE TYPE="text/css">
+        <!--
+                A.noul { text-decoration: none }
+        -->
+        </STYLE>
+
+
+
+        <TITLE>South Central USA Regional Programming Contest - Problem Set</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFF0" TEXT="#6505AE" LINK="#6505AE" VLINK="#9900FF">
+
+
+<TABLE BORDER="0" CELLSPACING="2" CELLPADDING="1" WIDTH="100%">
+<TR>
+	<TD WIDTH="20%"> <A HREF="http://acm.baylor.edu/acmicpc/"><IMG SRC="ur.gif" WIDTH="115" HEIGHT="70" BORDER="0"></A></TD>
+	<TD WIDTH="1%">&nbsp;</TD>
+	<TD WIDTH="58%" ALIGN="Center" > <IMG SRC="center6.gif" WIDTH="291" HEIGHT="33" ALIGN="Middle"><BR>
+		<H2>South Central USA Regional Programming Contest</H2>
+<P>
+<b><h2>Problem #4: Frogger's For Dinner</h2></b>
+</TD>
+	<TD WIDTH="1%">&nbsp;</TD>
+	<TD WIDTH="20%" ALIGN="Left"> <A HREF="http://www.lsu.edu/"><IMG SRC="lsulogo1.gif" WIDTH="42" HEIGHT="60" ALIGN="Middle" BORDER="0"></A></TD>
+</TR>
+</table>
+<b><u>Introduction</u></b>
+<p>
+&quot;Uncle Jacques, &quot; you ask, &quot;What's for dinner?&quot;
+<p>
+&quot;Ask me again in 10 minutes, &quot; Uncle Jacques replies, eyeing the weary-looking frog sitting on the shoulder of Interstate 10, in front of your dilapidated shack.
+<p>
+You notice the potential roadkill as it begins its journey across the vehicle-laden road.
+You want to know if you should begin boiling a pot of water in anticipation of frog legs for dinner or warm up the leftover possum.
+You fire up your Swamp 'Puter XL2 and quickly write a program to determine if it is possible for the frog to make it across the road or if it will be hit by a vehicle.
+<p>
+Examining the patch of road in front of your shack, you notice the lanes and shoulders resemble a 10 X 10 grid of squares (shown below).
+You also notice that the way the frog and the vehicles are moving can be described in &quot;turns&quot;.
+To determine if the frog makes it across the road, you quickly devise a set of rules:
+<ol>
+	<li>At the onset of a run, the frog can start in any square on row 0 (the starting shoulder).
+	<li>At the onset of a run, each vehicle will occupy a square in any column, but only in rows 1-8 (the lanes).
+	<li>Each turn will consist of two steps:
+	<ul>
+		<li>First, the frog will always remain in the same column and move one row down, towards row 9, his destination (he's not the smartest frog in the world).
+		<li>Next, all the vehicles move (at the same time), <i>n</i> squares left or right, depending on which row (lane) they are in, where n is their speed (given in the input).
+	To simulate more approaching vehicles, if a vehicle moves off the grid, it instead &quot;wraps around&quot; and appears from the opposite side.
+	Ex: In the grid below, if a vehicle would move to occupy column -1, it would instead occupy column 9 (column -2 would instead occupy column 8, etc.).
+	Also, if a vehicle would move to occupy column 10, it would instead occupy column 0 (column 11 would instead occupy column 1, etc.).
+<b><pre style='font-family:"Courier New"'>
+     Column
+    0123456789
+    ----------
+R 0|          |&lt;- The frog can start in any square on row 0 
+o 1|          |(shoulder)
+w 2|   /___   | 
+  3|   \      |cars in rows (lanes) 1-4 move left, or
+  4|          |towards column 0
+  5|          |
+  6|    ___\  |cars in rows (lanes) 5-8 move right, or
+  7|       /  |towards column 9
+  8|          |
+  9|          |&lt;- The destination row (shoulder) of the frog
+    ----------
+</pre></b>
+	</ul>
+	<li>The frog will succeed in crossing the interstate for a run if it can reach row 9 (without becoming roadkill) after a series of turns starting in ANY column on row 0 (he's not the dumbest frog in the world, either).
+	<li>The frog will become roadkill if at any point it occupies the same square as a vehicle. This includes:
+	<ul>
+		<li>The frog moving into a square a vehicle occupies, or
+		<li>A vehicle &quot;running over&quot; the frog by moving over or into a square the frog occupies.
+	</ul>
+</ol>
+<p>
+<b><u>Input</u></b>
+<p>
+Input to this problem will consist of a (non-empty) series of up to 100 data sets.
+Each data set will describe the starting conditions of the interstate for a run and will be formatted according to the following description.
+There will be <b>no blank lines</b> separating data sets.
+<ol>
+	<li><i>Start line</i> - A single line, &quot;<span style='font-family:"Courier New"'>START</span>&quot;
+	<li>The next 8 lines will represent rows 1-8 (the &quot;lanes&quot; of the interstate), starting with row 1.
+	Each line will consist of 10 integers, separated by single spaces.
+	Each integer will represent a column for that row and will be either:
+	<ul>
+		<li><span style='font-family:"Courier New"'>0</span>, representing no vehicle occupying that square, or
+		<li>a non-zero integer <i>N</i> in the range 1 &lt;= <i>N</i> &lt;= 9, representing a vehicle is occupying that square and the non-zero integer is its speed.
+		NOTE: The given speeds will NOT result in vehicles moving over other vehicles or into a square occupied by another vehicle (no accidents), since all the vehicles move at the same time and all vehicles on a given row are guaranteed to move at the same speed. 
+	</ul>
+	<li><i>End line</i> - A single line, &quot;<span style='font-family:"Courier New"'>END</span>&quot;
+</ol>
+<p>
+<b><u>Output</u></b>
+<p>
+Output for each data set will be exactly one line of output.
+The line will either be &quot;<span style='font-family:"Courier New"'>LEFTOVER POSSUM</span>&quot; or &quot;<span style='font-family:"Courier New"'>FROGGER</span>&quot; (both all caps with no whitespace leading or following).
+<p>
+&quot;<span style='font-family:"Courier New"'>LEFTOVER POSSUM</span>&quot; will appear if the frog can make it safely (without becoming roadkill) across the interstate after a series of turns starting in ANY column on row 0.
+<p>
+&quot;<span style='font-family:"Courier New"'>FROGGER</span>&quot; will be output for a data set if it fails to meet the criteria for a &quot;<span style='font-family:"Courier New"'>LEFTOVER POSSUM</span>&quot; line.
+<p> 
+<b><u>Sample Input</u>
+<pre style='font-family:"Courier New"'>
+START
+3 0 0 0 0 3 0 0 0 3
+1 0 0 0 1 0 0 0 0 0
+4 0 0 0 0 0 0 4 0 0
+0 0 2 0 0 0 0 0 0 2
+5 0 0 0 0 0 0 0 0 0
+0 2 0 0 0 0 0 2 0 2
+0 0 0 4 0 0 0 0 0 0
+0 2 0 0 0 0 0 0 0 0
+END
+START
+9 9 9 9 9 9 9 9 9 9
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+END
+START
+1 0 0 0 0 0 0 0 0 0
+0 1 0 0 0 0 0 0 0 0
+0 0 1 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0
+0 0 0 0 1 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+END
+</pre>
+<u>Sample Output</u>
+<pre style='font-family:"Courier New"'>
+FROGGER
+FROGGER
+LEFTOVER POSSUM
+</pre></b>
+<BR>
+<H5 ALIGN="center"><HR WIDTH="100%">The statements and opinions included in these pages
+are those of 2001 South Central USA Regional Programming Contest Staff only. Any statements and opinions included in these pages are NOT
+those of <I>Louisiana State University</I>, LSU Computer Science, LSU Computing Services,
+or the <I>LSU</I> Board of Supervisors.
+<BR>
+&copy; 1999,2000,2001 <A HREF="mailto:contest@contest.csc.lsu.edu"
+ONMOUSEOVER="window.status='Send E-Mail to WebMaster';return true;"
+ONMOUSEOUT="window.status='';" CLASS="noul">Isaac W. Traxler</A>
+<HR WIDTH="100%">
+</H5>
+</BODY>
+</HTML>
+

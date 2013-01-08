@@ -1,0 +1,284 @@
+
+Errata List for "Programming Challenges: The Programming
+Contest Training Manual" by Steven Skiena and Miguel Revilla
+
+Particularly serious errata are denoted with a (*)
+
+Send errata to skiena@cs.sunysb.edu
+Last addition: May 9, 2008
+
+=================================================================
+
+Page 12 -- The example using -MAXINT as sentinel is misleading
+because the C language family uses 2's complement arithmetic, and
+-MAXINT may not be the very smallest integer.  For such arithmetic,
+MININT = -MAXINT - 1   Of course, the value of the sentinel must be
+less than that of every legal input, which will not be true if the
+input contains MININT.
+
+(*) Page 12 -- In the while body, the statement   a[i] = a[i-1];  should be
+a[i+1] = a[i] ;
+
+Page 12, line -1 -- "the notation p.y and p.y" should be
+	"the notation p.x and p.y"
+
+Page 19, row -2 of table -- "Write the file name in MSDOS 8.3 format"
+should be "Write the file name exactly as it's at the 
+input file".
+
+Page 26, paragraph Notes 1.2, line 1 -- "n x n" should be "m x n" 
+
+Page 30, line -13 -- "insertion on deletion" should be
+"insertion or deletion"
+
+Page 36, function rank_card: printf statement should use %c as
+format indicators, not %d.
+
+(*) Page 42, Input section line 1 -- 'n < 3000' should be 'n <= 3000'
+
+Page 53, line -2 -- "more than" should be "more than one"
+
+Page 55, line 11 -- "jolly number" should be "jolly jumper"
+
+Page 83, line 10 -- We incorrectly claim our selection sort
+implementation, as written, is stable.  In fact, selection sort can be
+*made* stable while running in the same $O(n^2)$ worst case time by
+(a) ensuring that min is set to the first instance of the smallest element,
+    as it appears to be now, and
+(b) bubbling this element up into the proper position instead of swapping
+    it.  This might require moving up to $n$ other elements in the process,
+    but since we just compared all these elements to find the min, it at
+    most doubles the number of operations.
+
+(*) Page 106, function subtract_bignum -- Initialize the result of bignum *c
+by adding a missing call at the top to   initialize_bignum(c);
+
+Page 110, line 22 -- The binary value of 371 base 8 is 11111001 base 2,
+not 10111001.
+
+(*) Page 114, line -2 -- "A simpler method results" should be
+"We can compute the fraction associated with a repeating decimal"
+
+Page 115, line 15 -- $c[i]x^n$ should be $c[i]x^i$
+
+Page 120, clarification -- Make sure you handle the case of single-digit
+palindromes!
+
+(*) Page 133, line -3 -- "0 and 1" should be "-1 to 1"
+
+(*) Page 134, line -14 -- "exactly k ascending sequences or runs" should
+be "exactly k descents (p(j) > p(j+1)) or k+1 runs"
+
+(*) Page 134, line -10 -- The Eulerian number formula should be
+R(n,k) = (k+1)R(n-1,k) + (n-k)R(n-1, k-1)
+
+(*) Page 135, line 7 -- the set partition formula should be
+	k * ((n-1) partition k) + ((n-1) partition (k-1))
+where (n partition k) is the number of ways to partition n unique items 
+
+(*) page 135, line 17 -- the basis conditions of the integer partition
+formula are wrong.  They should be:
+
+f(n, k) = f(n, n) when k > n
+f(n, 1) = 1
+f(0, 0) = 1
+f(1, 1) = 1
+
+
+Page 147, line -5 -- The tenth prime number is 29, not 27.
+
+Page 152, line 13 -- delete "it will"
+
+(*) Page 155, line 25 -- m[1]b[1] = 1 (mod m[2]) should be
+	m[1]b[2] = 1 (mod m[2])
+
+Page 159, output section, line 3: Change the last line to
+"which minimizes |X|+|Y|. If the ambiguity persists, you should output 
+that pair for which X<=Y."
+
+
+Page 163, line 13 -- "required" should be "required)"
+
+(*) Page 171, line 5 -- There have been reports that this program crashes
+because a[i] is not initialized.  I have not been able to reproduce this,
+put perhaps my compiler is explicitly initializing certain things to zero.
+There have been other reports that the i=0..k-1 loop should be i = 1..k-1,
+because k =1 when this function is called the first time, so the first
+element of the permutation is stored in a[1].  My sense is that this
+is true.
+
+Page 179, line 9 -- "and and" should be "and"
+
+Page 184, figure caption -- "on step" should be "one step"
+
+Page 206, lines 6-7 -- "each each" should be "each"
+
+Page 213, line 13 -- "he has must stay" should be "he must stay"
+
+Page 217, line 8 -- We begin with "an" (not "a") overview..
+
+Page 221, Prim's implementation -- Should declare
+    int parent[MAXV];   /* records tree topology */
+(it was used as a global variable in our implementation)
+
+Page 222, line 13 -- The loop should run from starting i=1, not i=2 
+as in the text.  It doesn't really matter for Prim's algorithm, but this
+preserves similarity with Dijkstra's algorithm (see errata below)
+
+(*) Page 224, line -12 -- The loop should run from starting i=1, not i=2 
+as in the text.  This causes problems on shortest paths not starting from
+vertex 1.
+
+(*) Page 224 -- Another MAXINT related issue arises in Dijkstra's algorithm.
+The elements of the 'distance' vector are all initialized with MAXINT as
+an "infinity" value. However, when you make a test such as 
+
+if(distance[w] > (distance[v]+weight))
+
+and distance[v] is MAXINT, then the sum will overflow and probably be
+negative, misleading the program.  The solution is to define a smaller
+infinity constant, such as:
+
+#define INF MAXINT/2
+
+or even smaller -- as indeed you will find if you carefully at the .h files
+of our code.  It was not mentioned in the text, however.
+
+Page 227, 5th text paragraph, line 1 -- "using using" should be "using"
+
+(*) Page 243 -- Sample Input section, line -10
+3 1 2 3 2 2 3
+must be broken in two lines
+3 1 2 3
+2 2 3
+
+Page 255, line 4 -- should explicitly declare "int floors_walked"
+for clarity (it is implicitly so declared in C)
+
+Page 257, line 5 of Outpur section (the only formula) --
+The last character is a 'i' that must be eliminated.
+
+Page 268, first paragraph (after quote), line 2 --
+"grid distance measure grid" should be "grid distance measure"
+
+(*) page 270, function diagonal_order -- row/column indices are reversed
+or inconsistent with previous functions for parameters of process(int,int).
+
+Page 272, under Geometrical Coordinates, the formula should be --
+(xg, yg) = (d (yt + (xt cos(60 degrees))), d xt sin(60 degrees))
+
+page 274, top right circle in the picture -- second line of the center 
+label should be written in italics/math style.  The bottom right circle
+should be printed as "(0,3)" rather than "(0.3)".
+
+(*) Page 276 Paragraph starts with "Determining how many plates...", line 3 --
+"namely, (r,c-1) and (r,c)" should be "namely, (r+1,c-1) and (r+1,c)"
+
+(*) Page 277 function plates_on_top, first call to hex_to_array --
+hex_to_array(row,yh-row,&xla,&yla);
+should be hex_to_array(row,yh-(row-xh),&xla,&yla);
+because (row-xh) is the number of rows above the plate on row xh,
+and for each row above we have to go left by 1 
+according to the particular coordinate system.
+
+(*) Page 278, last line -- The formula is wrong.  A correct formula is:
+d(f,s) = R*acos( (sin(l[f])*sin(l[s])) + (cos(l[f])*cos(l[s])*cos(dg)) )
+where R is the radius of the Great circle, dg = longitude(f)-longitude(s),
+and l[f] = lattitude of f.
+
+Page 292 line 3 -- "(0,b) where it crosses the x-axis." should be
+"(0,b) where it crosses the y-axis."
+
+(*) Page 293, line -2 -- note that the tangent goes to infinity for
+perpendicular lines and zero for parallel lines
+
+Page 300, line -1 --
+The second reference to "d" must be removed as redundant.
+
+(*) Page 303, lines 2, 4, 6 -- The descriptions of the arc functions
+should read "Return the arc * of a, an angle in [.."
+
+(*) Page 314, function segments_intersect -- under if(same_lineQ(l1,l2)):
+The 3rd and 4th calls to point_in_box share identical parameters.
+The 4th call was supposed to be point_in_box(s2.p2,s1.p1,s1.p2) );
+In fact, neither of the 3rd or 4th calls are really necessary.
+
+(*) Page 315, paragraph 3 -- We misuse the term "acute" angle here
+and elsewhere in this section.  A reflex angle is one which is > 180 degrees,
+hence the proper term is "non-reflex".
+
+(*) Page 315 Last text paragraph, line 2 --
+"Negative area results if point c is to the left of a->b" should be
+"Positive area results if point c is to the left of a->b"
+
+(*) Page 316, line 4 -- the cw funciton should be changed to 
+bool cw(...)
+{
+ ...
+ ... < - EPSILON
+}
+because it is wrong for 0.0 .
+
+(*) Page 317-318 -- convex_hull code.
+Change the loop contents to:
+
+        while (i <= n) {
+                if (cw(hull->p[top-1], hull->p[top], in[i]))
+                        top = top-1;    /* top not on hull */
+                else {
+                        if (!collinear(hull->p[top - 1], hull->p[top], in[i]))
+                        top = top+1;
+                        copy_point(in[i],hull->p[top]);
+                        i = i+1;
+                }
+        }
+
+
+
+
+(*) Page 319 function sort_and_remove_duplicates --
+The condition of the for-loop should be i<oldn.
+Should not copy last point after the loop, because the
+last point can be the same point as second to last point.
+
+(*) Page 320, line -8 and -7 -- $n >=3$ should be $n >= 4$.
+
+(*) Page 224, second paragraph -- the references to "p" in this
+paragraph should be to the polygon $P$.
+
+(*) Page 325 Last paragraph, starts with "As another example, consider a rectangle...."
+B(P) = 2 | y[2] - y[1] + 1 |  +  2 | x[2] - x[1] + 1 | - 4 = 2(dy - dx) should be
+B(P) = 2( | y[2] - y[1] | + 1 ) + 2( | x[2] - x[1] | + 1 ) - 4 = 2(dy + dx)
+and
+I(P) = (dx+1)(dy+1) - 2(dy - dx) should be
+I(P) = (dx+1)(dy+1) - 2(dy + dx)
+
+Page 333, line 8, last word -- "an object" should be "a dot"
+
+(*) Page 333 14.7.6 Radar Tracking, Output --
+Add "Sort output by ascending angle value and then by descending distance value".
+This is not specified in the book but it is on the uva website.
+
+Page 342, line -2: "absence" should be "presence"
+
+Page 347, line 3 -- ACM ICPC rules have changed, and first-year
+graduate students are only allowed if it has been at most five years
+since you started your undergradate program.   Of course, we will be happy
+to have you for graduate study at Stony Brook even if you are not eligible
+for the team!
+
+Page 348, 110502 "Reverse and Add" -- authors name should be Enrique, not Erick
+
+Page 348, 110701 "Light, More Light" -- the list of authors should be:
+"S. M. Mahbub Mrushed (Udvranto Pathik), Sadi Khan"
+
+Page 348, problem 110302 "Where's Waldorf" -- Add credit for the problem
+to the University of Waterloo Computer Science Club (UWCSC)
+
+Page 349, problem 110408 "How Big is It" -- Add credit for the problem
+to the University of Waterloo Computer Science Club (UWCSC)
+
+(*) Page 349, problem 111203 "Star" -- Martins Opmanis is the
+real author of this problem, which appeared in the 4th Baltic Olympiad in 
+Informatics, held in Tartu(Estonia) in April 25-28, 1998.
+

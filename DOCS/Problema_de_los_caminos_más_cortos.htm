@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" dir="ltr">
+<head>
+<title>Problema del camino más corto - Wikipedia, la enciclopedia libre</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="MediaWiki 1.16wmf4" />
+<link rel="canonical" href="/wiki/Problema_del_camino_m%C3%A1s_corto" />
+<link rel="alternate" type="application/x-wiki" title="Editar" href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit" />
+<link rel="edit" title="Editar" href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit" />
+<link rel="apple-touch-icon" href="http://es.wikipedia.org/apple-touch-icon.png" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (es)" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Fuente Atom" href="/w/index.php?title=Especial:CambiosRecientes&amp;feed=atom" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/vector/main-ltr.css?283-1" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/common/shared.css?283-1" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/skins-1.5/common/commonPrint.css?283-1" type="text/css" media="print" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/css/combined.min.css?117" type="text/css" media="all" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/css/vector/jquery-ui-1.7.2.css?1.7.2y" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="print" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Handheld.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="handheld" />
+<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Vector.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="all" />
+<link rel="stylesheet" href="/w/index.php?title=-&amp;action=raw&amp;maxage=2678400&amp;gen=css" type="text/css" media="all" />
+<script type="text/javascript">
+var skin="vector",
+stylepath="http://bits.wikimedia.org/skins-1.5",
+wgUrlProtocols="http\\:\\/\\/|https\\:\\/\\/|ftp\\:\\/\\/|irc\\:\\/\\/|gopher\\:\\/\\/|telnet\\:\\/\\/|nntp\\:\\/\\/|worldwind\\:\\/\\/|mailto\\:|news\\:|svn\\:\\/\\/",
+wgArticlePath="/wiki/$1",
+wgScriptPath="/w",
+wgScriptExtension=".php",
+wgScript="/w/index.php",
+wgVariantArticlePath=false,
+wgActionPaths={},
+wgServer="http://es.wikipedia.org",
+wgCanonicalNamespace="",
+wgCanonicalSpecialPageName=false,
+wgNamespaceNumber=0,
+wgPageName="Problema_del_camino_más_corto",
+wgTitle="Problema del camino más corto",
+wgAction="view",
+wgArticleId=2504127,
+wgIsArticle=true,
+wgUserName=null,
+wgUserGroups=null,
+wgUserLanguage="es",
+wgContentLanguage="es",
+wgBreakFrames=false,
+wgCurRevisionId=35812542,
+wgVersion="1.16wmf4",
+wgEnableAPI=true,
+wgEnableWriteAPI=true,
+wgSeparatorTransformTable=[",	.", ".	,"],
+wgDigitTransformTable=["", ""],
+wgMainPageTitle="Wikipedia:Portada",
+wgFormattedNamespaces={"-2": "Media", "-1": "Especial", "0": "", "1": "Discusión", "2": "Usuario", "3": "Usuario Discusión", "4": "Wikipedia", "5": "Wikipedia Discusión", "6": "Archivo", "7": "Archivo Discusión", "8": "MediaWiki", "9": "MediaWiki Discusión", "10": "Plantilla", "11": "Plantilla Discusión", "12": "Ayuda", "13": "Ayuda Discusión", "14": "Categoría", "15": "Categoría Discusión", "100": "Portal", "101": "Portal Discusión", "102": "Wikiproyecto", "103": "Wikiproyecto Discusión", "104": "Anexo", "105": "Anexo Discusión"},
+wgNamespaceIds={"media": -2, "especial": -1, "": 0, "discusión": 1, "usuario": 2, "usuario_discusión": 3, "wikipedia": 4, "wikipedia_discusión": 5, "archivo": 6, "archivo_discusión": 7, "mediawiki": 8, "mediawiki_discusión": 9, "plantilla": 10, "plantilla_discusión": 11, "ayuda": 12, "ayuda_discusión": 13, "categoría": 14, "categoría_discusión": 15, "portal": 100, "portal_discusión": 101, "wikiproyecto": 102, "wikiproyecto_discusión": 103, "anexo": 104, "anexo_discusión": 105, "imagen": 6, "imagen_discusión": 7, "image": 6, "image_talk": 7},
+wgSiteName="Wikipedia",
+wgCategories=["Teoría de grafos"],
+wgDBname="eswiki",
+wgMWSuggestTemplate="http://es.wikipedia.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest",
+wgSearchNamespaces=[0, 100, 104],
+wgMWSuggestMessages=["con sugerencias", "sin sugerencias"],
+wgRestrictionEdit=[],
+wgRestrictionMove=[],
+wgWikimediaMobileUrl="http://es.m.wikipedia.org/wiki",
+wgCollapsibleNavBucketTest=false,
+wgCollapsibleNavForceNewVersion=false,
+wgVectorPreferences={"collapsiblenav": {"enable": 1}, "editwarning": {"enable": 1}, "simplesearch": {"enable": 1, "disablesuggest": 0}},
+wgVectorEnabledModules={"collapsiblenav": true, "collapsibletabs": true, "editwarning": true, "expandablesearch": false, "footercleanup": false, "simplesearch": true},
+Geo={"city": "", "country": ""},
+wgNoticeProject="wikipedia";
+</script><script src="http://bits.wikimedia.org/skins-1.5/common/wikibits.js?283-1" type="text/javascript"></script>
+<script type="text/javascript" src="http://bits.wikimedia.org/skins-1.5/common/jquery.min.js?283-1"></script>
+<script src="http://bits.wikimedia.org/skins-1.5/common/ajax.js?283-1" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/skins-1.5/common/mwsuggest.js?283-1" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/WikimediaMobile/MobileRedirect.js?2.2" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/js/plugins.combined.min.js?283-1" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/w/extensions/UsabilityInitiative/Vector/Vector.combined.min.js?283-1" type="text/javascript"></script>
+<script type="text/javascript">mw.usability.addMessages({'vector-collapsiblenav-more':'Más idiomas','vector-editwarning-warning':'Dejar esta página le causará la pérdida de cualquier cambio que haya hecho.\nSi está \"logueado\", puede deshabilitar esta advertencia en la sección \"Edición\" de sus preferencias.','vector-simplesearch-search':'Búsqueda','vector-simplesearch-containing':'conteniendo...'});</script>
+<script src="/wiki/Especial:BannerController?283-1" type="text/javascript"></script>
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.5/vector/csshover.htc")}</style><![endif]-->
+<script src="/w/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=vector&amp;283-1" type="text/javascript"></script>
+
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Problema_del_camino_más_corto skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><!-- centralNotice loads here --></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Problema del camino más corto</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<div id="siteSub">De Wikipedia, la enciclopedia libre</div>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub">(Redirigido desde <a href="/w/index.php?title=Problema_de_los_caminos_m%C3%A1s_cortos&amp;redirect=no" title="Problema de los caminos más cortos">Problema de los caminos más cortos</a>)</div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Saltar a <a href="#mw-head">navegación</a>,
+					<a href="#p-search">búsqueda</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<div class="thumb tright">
+<div class="thumbinner" style="width:352px;"><a href="/wiki/Archivo:Caminosmascortos.jpg" class="image"><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Caminosmascortos.jpg/350px-Caminosmascortos.jpg" width="350" height="235" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/Archivo:Caminosmascortos.jpg" class="internal" title="Aumentar"><img src="http://bits.wikimedia.org/skins-1.5/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+Ejemplo de Grafo Ponderado</div>
+</div>
+</div>
+<p>En la <a href="/wiki/Teor%C3%ADa_de_grafos" title="Teoría de grafos">Teoría de grafos</a>, el problema de los caminos más cortos es el problema que consiste en encontrar un camino entre dos vértices (o nodos) de tal manera que la suma de los pesos de las aristas que lo constituyen es mínima. Un ejemplo es encontrar el camino más rápido para ir de una ciudad a otra en un mapa. En este caso, los vértices representan las ciudades, y las aristas las carreteras que las unen, cuya ponderación viene dada por el tiempo que se emplea en atravesarlas.</p>
+<p><br /></p>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contenido</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introducci.C3.B3n"><span class="tocnumber">1</span> <span class="toctext">Introducción</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Algoritmos"><span class="tocnumber">2</span> <span class="toctext">Algoritmos</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Anexo:_Ejemplo_de_Algoritmo_de_Dijkstra"><span class="tocnumber">2.1</span> <span class="toctext">Anexo: Ejemplo de Algoritmo de Dijkstra</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Anexo:_Ejemplo_de_Algoritmo_de_Bellman_-_Ford"><span class="tocnumber">2.2</span> <span class="toctext">Anexo: Ejemplo de Algoritmo de Bellman - Ford</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Aplicaciones"><span class="tocnumber">3</span> <span class="toctext">Aplicaciones</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Problemas_Relacionados"><span class="tocnumber">4</span> <span class="toctext">Problemas Relacionados</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Enlaces_externos"><span class="tocnumber">5</span> <span class="toctext">Enlaces externos</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+if (window.showTocToggle) { var tocShowText = "mostrar"; var tocHideText = "ocultar"; showTocToggle(); } 
+//]]>
+</script>
+<h2><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=1" title="Editar sección: Introducción">editar</a>]</span> <span class="mw-headline" id="Introducci.C3.B3n">Introducción</span></h2>
+<p>Formalmente, dado un grafo ponderado (que es un conjunto V de vértices, un conjunto E de aristas y una función de variable real ponderada <i>f</i>&#160;: E → <b>R</b>) y un elemento v ∈ V encuentra un camino P de v a v' ∈ V, tal que:</p>
+<p><br /></p>
+<p><img class="tex" alt="\sum_{p\in P} f(p)" src="http://upload.wikimedia.org/math/b/4/5/b45729288588aa71f80fa76d12767917.png" /></p>
+<p><br />
+es el mínimo entre todos los caminos que conectan v y v'.</p>
+<p>El problema es también conocido como el problema de los caminos más cortos entre dos nodos, para diferenciarlo de la siguiente generalización:</p>
+<ul>
+<li><b>El problema de los caminos más cortos desde un origen</b> en el cual tenemos que encontrar los caminos más cortos de un vértice origen v a todos los demás vértices del grafo.</li>
+<li><b>El problema de los caminos más cortos con un destino</b> en el cual tenemos que encontrar los caminos más cortos desde todos los vértices del grafo a un único vértice destino, esto puede ser reducido al problema anterior invirtiendo el orden.</li>
+<li><b>El problema de los caminos más cortos entre todos los pares de vértices</b>, el cual tenemos que encontrar los caminos más cortos entre cada par de vértices (v , v') en el grafo.</li>
+</ul>
+<p><br /></p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=2" title="Editar sección: Algoritmos">editar</a>]</span> <span class="mw-headline" id="Algoritmos">Algoritmos</span></h2>
+<p>Los algoritmos más importantes para resolver este problema son:</p>
+<ul>
+<li><b><a href="/wiki/Algoritmo_de_Dijkstra" title="Algoritmo de Dijkstra">Algoritmo de Dijkstra</a></b>, resuelve el problema de los caminos más cortos entre dos vértices, desde un origen y un único destino.</li>
+<li><b><a href="/wiki/Algoritmo_de_Bellman-Ford" title="Algoritmo de Bellman-Ford">Algoritmo de Bellman - Ford</a></b>, resuelve el problema de los caminos más cortos desde un origen si la ponderación de las aristas es negativa.</li>
+<li><b><a href="/wiki/Algoritmo_de_b%C3%BAsqueda_A*" title="Algoritmo de búsqueda A*">Algoritmo de Búsqueda A*</a></b>, resuelve el problema de los caminos más cortos entre un par de vértices usando la <a href="/wiki/Heur%C3%ADstica" title="Heurística">heurística</a> para intentar agilizar la búsqueda.</li>
+<li><b><a href="/wiki/Algoritmo_de_Floyd-Warshall" title="Algoritmo de Floyd-Warshall">Algoritmo de Floyd - Warshall</a></b>, resuelve el problema de los caminos más cortos entre todos los vértices.</li>
+<li><b><a href="/wiki/Algoritmo_de_Johnson" title="Algoritmo de Johnson">Algoritmo de Johnson</a></b>, resuelve el problema de los caminos más cortos entre todos los vértices y puede ser más rápido que el de Floyd - Warshall en grafos de baja densidad.</li>
+<li><b><a href="/wiki/Teor%C3%ADa_perturbacional" title="Teoría perturbacional">Teoría perturbacional</a></b>, encuentra en el peor de los casos el camino más corto a nivel local.</li>
+</ul>
+<h5><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=3" title="Editar sección: Anexo: Ejemplo de Algoritmo de Dijkstra">editar</a>]</span> <span class="mw-headline" id="Anexo:_Ejemplo_de_Algoritmo_de_Dijkstra"><i><a href="/wiki/Anexo:Ejemplo_de_Algoritmo_de_Dijkstra" title="Anexo:Ejemplo de Algoritmo de Dijkstra">Anexo: Ejemplo de Algoritmo de Dijkstra</a></i></span></h5>
+<h5><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=4" title="Editar sección: Anexo: Ejemplo de Algoritmo de Bellman - Ford">editar</a>]</span> <span class="mw-headline" id="Anexo:_Ejemplo_de_Algoritmo_de_Bellman_-_Ford"><i><a href="/wiki/Anexo:Ejemplo_de_Algoritmo_de_Bellman_-_Ford" title="Anexo:Ejemplo de Algoritmo de Bellman - Ford">Anexo: Ejemplo de Algoritmo de Bellman - Ford</a></i></span></h5>
+<h2><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=5" title="Editar sección: Aplicaciones">editar</a>]</span> <span class="mw-headline" id="Aplicaciones">Aplicaciones</span></h2>
+<p>Los algoritmos de los caminos más cortos se aplican para encontrar direcciones de forma automática entre localizaciones físicas, tales como direcciones en mapas callejeros.</p>
+<p>Si un algoritmo representa una máquina abstracta no determinista como un grafo, donde los vértices describen estados, y las aristas posibles transiciones, el algoritmo de los caminos más cortos se usa para encontrar una secuencia óptima de opciones para llegar a un cierto estado final o para establecer límites más bajos en el tiempo, necesario para alcanzar un estado dado. Por ejemplo, si los vértices representan los estados de un puzzle como el <a href="/wiki/Cubo_de_Rubik" title="Cubo de Rubik">Cubo de Rubik</a>, cada arista dirigida corresponde a un simple movimiento o giro. El algoritmo de los caminos más cortos se usa para encontrar la solución que utiliza el mínimo número posible de movimientos.</p>
+<p>En el argot de las telecomunicaciones, a este algoritmo es también conocido como el problema del mínimo retraso, y con frecuencia se compara con el problema de los caminos más anchos.</p>
+<p>Una aplicación más coloquial es la teoría de los "<a href="/wiki/Seis_grados_de_separaci%C3%B3n" title="Seis grados de separación">Seis grados de separación</a>", a partir de la cual se intenta encontrar el camino más corto entre dos personas cualesquiera.</p>
+<p>Otras aplicaciones incluyen la <a href="/wiki/Investigaci%C3%B3n_de_operaciones" title="Investigación de operaciones">Investigación de operaciones</a>, instalaciones y facilidad de diseño, robótica, transporte y <a href="/wiki/VLSI" title="VLSI" class="mw-redirect">VLSI</a> de diseño.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=6" title="Editar sección: Problemas Relacionados">editar</a>]</span> <span class="mw-headline" id="Problemas_Relacionados">Problemas Relacionados</span></h2>
+<p>El <a href="/wiki/Problema_del_viajante" title="Problema del viajante">problema de viajante de comercio</a>, es el problema que trata de encontrar el camino más corto que pasa sólo una vez por cada vértice y regresa al comienzo. A diferencia de los caminos más cortos, el cual puede ser resuelto en un tiempo polinomial en grafos sin ciclos negativos, este problema es <a href="/wiki/NP-completo" title="NP-completo">NP-completo</a>, y como tal, no tiene una resolución eficiente (ver P=Problema NP).</p>
+<p>El problema de encontrar el camino más largo es también <a href="/wiki/NP-completo" title="NP-completo">NP-completo</a>.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;section=7" title="Editar sección: Enlaces externos">editar</a>]</span> <span class="mw-headline" id="Enlaces_externos">Enlaces externos</span></h2>
+<ul>
+<li><a href="http://www.cimat.mx/~jbhayet/CLASES/PROGRAMACIONII/clase11.pdf" class="external text" rel="nofollow">Caminos más cortos - Dr J.B.Hayet</a></li>
+<li><a href="http://www.eisc.univalle.edu.co/materias/FADA/clases/sesion16.pdf" class="external text" rel="nofollow">Caminos más cortos desde un origen a muchos destinos - Julio Cesar López</a></li>
+<li><a href="http://www.math.epn.edu.ec/~ltorres/inv-oper-1/lab2.pdf" class="external text" rel="nofollow">Algebra matricial y Teoría de grafos - Luis M. Torres</a></li>
+<li><a href="http://www.unf.edu/~wkloster/foundations/DijkstraApplet/DijkstraApplet.htm" class="external text" rel="nofollow">Demostración del Algoritmo de Dijkstra</a></li>
+<li><a href="http://neo.lcc.uma.es/evirtual/cdd/applets/BellmanFord/Example3.html" class="external text" rel="nofollow">Demostracion del Algoritmo de Bellman Ford</a></li>
+<li><a href="http://sertel.upc.es/redes/Bellman.pdf" class="external text" rel="nofollow">Ejemplo de Ejercicio de Bellman Ford</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 36/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key eswiki:pcache:idhash:2504127-0!1!0!!es!4 and timestamp 20101013202245 -->
+<div class="printfooter">
+Obtenido de "<a href="http://es.wikipedia.org/wiki/Problema_del_camino_m%C3%A1s_corto">http://es.wikipedia.org/wiki/Problema_del_camino_m%C3%A1s_corto</a>"</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/wiki/Especial:Categor%C3%ADas" title="Especial:Categorías">Categoría</a>: <span dir='ltr'><a href="/wiki/Categor%C3%ADa:Teor%C3%ADa_de_grafos" title="Categoría:Teoría de grafos">Teoría de grafos</a></span></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Herramientas personales</h5>
+	<ul>
+					<li  id="pt-prefswitch-link-anon"><a href="http://es.wikipedia.org/w/index.php?title=Especial:UsabilityInitiativePrefSwitch&amp;from=Problema_del_camino_m%C3%A1s_corto" title="Aprender acercadelasnuevas características" class="no-text-transform">Nuevas características</a></li>
+					<li  id="pt-login"><a href="/w/index.php?title=Especial:Entrar&amp;returnto=Problema_del_camino_m%C3%A1s_corto" title="Te invitamos a registrarse, aunque no es obligatorio [o]" accesskey="o">Registrarse/Entrar</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Espacios de nombres</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><a href="/wiki/Problema_del_camino_m%C3%A1s_corto"  title="Ver el artículo [c]" accesskey="c"><span>Artículo</span></a></li>
+					<li  id="ca-talk" class="new"><a href="/w/index.php?title=Discusi%C3%B3n:Problema_del_camino_m%C3%A1s_corto&amp;action=edit&amp;redlink=1"  title="Discusión acerca del artículo [t]" accesskey="t"><span>Discusión</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>Variantes</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Vistas</h5>
+	<ul>
+					<li id="ca-view" class="selected"><a href="/wiki/Problema_del_camino_m%C3%A1s_corto" ><span>Leer</span></a></li>
+					<li id="ca-edit"><a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=edit"  title="Puedes editar esta página. Por favor, usa el botón de previsualización antes de grabar. [e]" accesskey="e"><span>Editar</span></a></li>
+					<li id="ca-history" class="collapsible "><a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;action=history"  title="Versiones anteriores de esta página y sus autores [h]" accesskey="h"><span>Ver historial</span></a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Acciones</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Buscar</label></h5>
+	<form action="/w/index.php" id="searchform">
+		<input type='hidden' name="title" value="Especial:Buscar"/>
+				<div id="simpleSearch">
+			<input id="searchInput" name="search" type="text"  title="Buscar en este wiki [f]" accesskey="f"  value="" />
+			<button id="searchButton" type='submit' name='button'  title="Busca páginas con este texto."><img src="http://bits.wikimedia.org/skins-1.5/vector/images/search-ltr.png?283-1" alt="Buscar" /></button>
+		</div>
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(http://upload.wikimedia.org/wikipedia/commons/8/8c/Wikipedia-logo-v2-es.png);" href="/wiki/Wikipedia:Portada"  title="Portada"></a></div>
+				<!-- /logo -->
+				
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navegación</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage-description"><a href="/wiki/Wikipedia:Portada" title="Visitar la página principal [z]" accesskey="z">Portada</a></li>
+					<li id="n-portal"><a href="/wiki/Portal:Comunidad" title="Acerca del proyecto, qué puede hacer, dónde encontrar información">Portal de la comunidad</a></li>
+					<li id="n-currentevents"><a href="/wiki/Portal:Actualidad" title="Información de contexto sobre acontecimientos actuales">Actualidad</a></li>
+					<li id="n-recentchanges"><a href="/wiki/Especial:CambiosRecientes" title="La lista de cambios recientes en el wiki [r]" accesskey="r">Cambios recientes</a></li>
+					<li id="n-randompage"><a href="/wiki/Especial:Aleatoria" title="Cargar una página aleatoriamente [x]" accesskey="x">Página aleatoria</a></li>
+					<li id="n-help"><a href="/wiki/Ayuda:Contenidos" title="El lugar para aprender">Ayuda</a></li>
+					<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donaciones" title="Apóyenos">Donaciones</a></li>
+					<li id="n-bug_in_article"><a href="/wiki/Wikipedia:Informes_de_error">Notificar un error</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Imprimir/exportar</h5>
+	<div class="body">
+				<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="/w/index.php?title=Especial:Libro&amp;bookcmd=book_creator&amp;referer=Problema+del+camino+m%C3%A1s+corto" title="Crear un libro o colección de página" rel="nofollow">Crear un libro</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Especial:Libro&amp;bookcmd=render_article&amp;arttitle=Problema+del+camino+m%C3%A1s+corto&amp;oldid=35812542&amp;writer=rl" title="Descargar una versión PDF de esta página wiki" rel="nofollow">Descargar como PDF</a></li><li id="t-print"><a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;printable=yes" title="Versión imprimible de la página [p]" accesskey="p">Versión para imprimir</a></li></ul>			</div>
+</div>
+
+<!-- /coll-print_export -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Herramientas</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="/wiki/Especial:LoQueEnlazaAqu%C3%AD/Problema_del_camino_m%C3%A1s_corto" title="Lista de todas las páginas del wiki que enlazan con ésta [j]" accesskey="j">Lo que enlaza aquí</a></li>
+						<li id="t-recentchangeslinked"><a href="/wiki/Especial:CambiosEnEnlazadas/Problema_del_camino_m%C3%A1s_corto" title="Cambios recientes en las páginas que enlazan con ésta [k]" accesskey="k">Cambios en enlazadas</a></li>
+																																					<li id="t-upload"><a href="http://commons.wikimedia.org/wiki/Commons:Upload/es" title="Subir imágenes o archivos multimedia [u]" accesskey="u">Subir archivo</a></li>
+											<li id="t-specialpages"><a href="/wiki/Especial:P%C3%A1ginasEspeciales" title="Lista de todas las páginas especiales [q]" accesskey="q">Páginas especiales</a></li>
+											<li id="t-permalink"><a href="/w/index.php?title=Problema_del_camino_m%C3%A1s_corto&amp;oldid=35812542" title="Enlace permanente a esta versión de la página">Enlace permanente</a></li>
+				<li id="t-cite"><a href="/w/index.php?title=Especial:Citar&amp;page=Problema_del_camino_m%C3%A1s_corto&amp;id=35812542" title="Información de cómo citar esta página">Citar este artículo</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id="p-lang">
+	<h5>En otros idiomas</h5>
+	<div class="body">
+		<ul>
+					<li class="interwiki-ca"><a href="http://ca.wikipedia.org/wiki/Problema_del_cam%C3%AD_m%C3%A9s_curt" title="Problema del camí més curt">Català</a></li>
+					<li class="interwiki-de"><a href="http://de.wikipedia.org/wiki/K%C3%BCrzester_Pfad" title="Kürzester Pfad">Deutsch</a></li>
+					<li class="interwiki-en"><a href="http://en.wikipedia.org/wiki/Shortest_path_problem" title="Shortest path problem">English</a></li>
+					<li class="interwiki-fa"><a href="http://fa.wikipedia.org/wiki/%D9%85%D8%B3%D8%A7%D9%84%D9%87_%DB%8C%D8%A7%D9%81%D8%AA%D9%86_%DA%A9%D9%88%D8%AA%D8%A7%D9%87%D8%AA%D8%B1%DB%8C%D9%86_%D9%85%D8%B3%DB%8C%D8%B1" title="مساله یافتن کوتاهترین مسیر">فارسی</a></li>
+					<li class="interwiki-fr"><a href="http://fr.wikipedia.org/wiki/Probl%C3%A8mes_de_cheminement" title="Problèmes de cheminement">Français</a></li>
+					<li class="interwiki-it"><a href="http://it.wikipedia.org/wiki/Shortest_path" title="Shortest path">Italiano</a></li>
+					<li class="interwiki-ja"><a href="http://ja.wikipedia.org/wiki/%E6%9C%80%E7%9F%AD%E7%B5%8C%E8%B7%AF%E5%95%8F%E9%A1%8C" title="最短経路問題">日本語</a></li>
+					<li class="interwiki-ko"><a href="http://ko.wikipedia.org/wiki/%EC%B5%9C%EB%8B%A8_%EA%B2%BD%EB%A1%9C_%EB%AC%B8%EC%A0%9C" title="최단 경로 문제">한국어</a></li>
+					<li class="interwiki-lt"><a href="http://lt.wikipedia.org/wiki/Trumpiausio_kelio_problema" title="Trumpiausio kelio problema">Lietuvių</a></li>
+					<li class="interwiki-pl"><a href="http://pl.wikipedia.org/wiki/Problem_najkr%C3%B3tszej_%C5%9Bcie%C5%BCki" title="Problem najkrótszej ścieżki">Polski</a></li>
+					<li class="interwiki-pt"><a href="http://pt.wikipedia.org/wiki/Problema_do_caminho_m%C3%ADnimo" title="Problema do caminho mínimo">Português</a></li>
+					<li class="interwiki-ur"><a href="http://ur.wikipedia.org/wiki/%DA%A9%D9%85%D8%AA%D8%B1%DB%8C%D9%86_%D8%B1%D8%B3%D8%AA%DB%81_%D8%A7%D9%84%D8%AE%D9%88%D8%A7%D8%B1%D8%B2%D9%85" title="کمترین رستہ الخوارزم">اردو</a></li>
+					<li class="interwiki-vi"><a href="http://vi.wikipedia.org/wiki/B%C3%A0i_to%C3%A1n_%C4%91%C6%B0%E1%BB%9Dng_%C4%91i_ng%E1%BA%AFn_nh%E1%BA%A5t" title="Bài toán đường đi ngắn nhất">Tiếng Việt</a></li>
+					<li class="interwiki-zh"><a href="http://zh.wikipedia.org/wiki/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98" title="最短路问题">中文</a></li>
+				</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> Esta página fue modificada por última vez el 4 abr 2010, a las 22:44.</li>
+																							<li id="footer-info-copyright">El texto está disponible bajo la <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.es">Licencia Creative Commons Reconocimiento Compartir Igual 3.0</a>; podrían ser aplicables cláusulas adicionales. Lee los <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">términos de uso</a> para más información.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="http://wikimediafoundation.org/wiki/Pol%C3%ADtica_de_privacidad" title="wikimedia:Política de privacidad">Política de privacidad</a></li>
+																							<li id="footer-places-about"><a href="/wiki/Wikipedia:Acerca_de" title="Wikipedia:Acerca de">Acerca de Wikipedia</a></li>
+																							<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:Limitaci%C3%B3n_general_de_responsabilidad" title="Wikipedia:Limitación general de responsabilidad">Descargo de responsabilidad</a></li>
+															</ul>
+										<ul id="footer-icons" class="noprint">
+								<li id="footer-icon-poweredby"><a href="http://www.mediawiki.org/"><img src="http://bits.wikimedia.org/skins-1.5/common/images/poweredby_mediawiki_88x31.png" height="31" width="88" alt="Powered by MediaWiki" /></a></li>
+												<li id="footer-icon-copyright"><a href="http://wikimediafoundation.org/"><img src="/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a></li>
+							</ul>
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		
+<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<script type="text/javascript" src="http://geoiplookup.wikimedia.org/"></script>		<!-- Served by srv207 in 0.115 secs. -->			</body>
+</html>

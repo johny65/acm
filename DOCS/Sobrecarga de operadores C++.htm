@@ -1,0 +1,754 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Programación en C++/Sobrecarga de Operadores - Wikilibros</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="MediaWiki 1.17wmf1" />
+<meta name="robots" content="noindex,follow" />
+<link rel="alternate" type="application/x-wiki" title="editar" href="/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;action=edit" />
+<link rel="edit" title="editar" href="/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;action=edit" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikilibros (es)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://es.wikibooks.org/w/api.php?action=rsd" />
+<link rel="copyright" href="http://creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Feed Atom de Wikilibros" href="/w/index.php?title=Especial:CambiosRecientes&amp;feed=atom" />
+<link rel="stylesheet" href="http://bits.wikimedia.org/es.wikibooks.org/load.php?debug=false&amp;lang=es&amp;modules=ext%21wikihiero%7Cmediawiki%21legacy%21commonPrint%7Cmediawiki%21legacy%21shared%7Cskins%21vector&amp;only=styles&amp;printable=1&amp;skin=vector" type="text/css" media="all" />
+<meta name="ResourceLoaderDynamicStyles" content="" /><link rel="stylesheet" href="http://bits.wikimedia.org/es.wikibooks.org/load.php?debug=false&amp;lang=es&amp;modules=site&amp;only=styles&amp;printable=1&amp;skin=vector" type="text/css" media="all" />
+<style type="text/css" media="all">a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: eswikibooks:resourceloader:filter:minify-css:5:f2a9127573a22335c2a9102b208c73e7 */</style>
+<script src="http://bits.wikimedia.org/es.wikibooks.org/load.php?debug=false&amp;lang=es&amp;modules=startup&amp;only=scripts&amp;printable=1&amp;skin=vector" type="text/javascript"></script>
+<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.config.set({"wgCanonicalNamespace": "", "wgCanonicalSpecialPageName": false, "wgNamespaceNumber": 0, "wgPageName": "Programación_en_C++/Sobrecarga_de_Operadores", "wgTitle": "Programación en C++/Sobrecarga de Operadores", "wgAction": "view", "wgArticleId": 19627, "wgIsArticle": true, "wgUserName": null, "wgUserGroups": ["*"], "wgCurRevisionId": 170270, "wgCategories": [], "wgBreakFrames": false, "wgRestrictionEdit": [], "wgRestrictionMove": [], "wgSearchNamespaces": [0], "wgVectorEnabledModules": {"collapsiblenav": true, "collapsibletabs": true, "editwarning": true, "expandablesearch": false, "footercleanup": false, "sectioneditlinks": false, "simplesearch": true, "experiments": true}, "wgWikiEditorEnabledModules": {"toolbar": true, "dialogs": true, "templateEditor": false, "templates": false, "addMediaWizard": false, "preview": false, "previewDialog": false, "publish": false, "toc": false}, "Geo": {"city": "", "country": ""}, "wgNoticeProject": "wikibooks"});
+}
+</script>
+
+<style type="text/css">/*<![CDATA[*/
+.source-cpp {line-height: normal;}
+.source-cpp li, .source-cpp pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for cpp
+ * CSS class: source-cpp, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.cpp.source-cpp .de1, .cpp.source-cpp .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.cpp.source-cpp  {font-family:monospace;}
+.cpp.source-cpp .imp {font-weight: bold; color: red;}
+.cpp.source-cpp li, .cpp.source-cpp .li1 {font-weight: normal; vertical-align:top;}
+.cpp.source-cpp .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.cpp.source-cpp .li2 {font-weight: bold; vertical-align:top;}
+.cpp.source-cpp .kw1 {color: #0000ff;}
+.cpp.source-cpp .kw2 {color: #0000ff;}
+.cpp.source-cpp .kw3 {color: #0000dd;}
+.cpp.source-cpp .kw4 {color: #0000ff;}
+.cpp.source-cpp .co1 {color: #666666;}
+.cpp.source-cpp .co2 {color: #339900;}
+.cpp.source-cpp .coMULTI {color: #ff0000; font-style: italic;}
+.cpp.source-cpp .es0 {color: #000099; font-weight: bold;}
+.cpp.source-cpp .es1 {color: #000099; font-weight: bold;}
+.cpp.source-cpp .es2 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es3 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es4 {color: #660099; font-weight: bold;}
+.cpp.source-cpp .es5 {color: #006699; font-weight: bold;}
+.cpp.source-cpp .br0 {color: #008000;}
+.cpp.source-cpp .sy0 {color: #008000;}
+.cpp.source-cpp .sy1 {color: #000080;}
+.cpp.source-cpp .sy2 {color: #000040;}
+.cpp.source-cpp .sy3 {color: #000040;}
+.cpp.source-cpp .sy4 {color: #008080;}
+.cpp.source-cpp .st0 {color: #FF0000;}
+.cpp.source-cpp .nu0 {color: #0000dd;}
+.cpp.source-cpp .nu6 {color: #208080;}
+.cpp.source-cpp .nu8 {color: #208080;}
+.cpp.source-cpp .nu12 {color: #208080;}
+.cpp.source-cpp .nu16 {color:#800080;}
+.cpp.source-cpp .nu17 {color:#800080;}
+.cpp.source-cpp .nu18 {color:#800080;}
+.cpp.source-cpp .nu19 {color:#800080;}
+.cpp.source-cpp .me1 {color: #007788;}
+.cpp.source-cpp .me2 {color: #007788;}
+.cpp.source-cpp .ln-xtra, .cpp.source-cpp li.ln-xtra, .cpp.source-cpp div.ln-xtra {background-color: #ffc;}
+.cpp.source-cpp span.xtra { display:block; }
+
+/*]]>*/
+</style>
+<style type="text/css">/*<![CDATA[*/
+@import "/w/index.php?title=MediaWiki:Geshi.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400";
+/*]]>*/
+</style><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.17/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr ns-0 ns-subject page-Programación_en_C_Sobrecarga_de_Operadores skin-vector">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><!-- centralNotice loads here --></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">Programación en C++/Sobrecarga de Operadores</h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+				<!-- tagline -->
+				<div id="siteSub">De Wikilibros, la colección de libros de texto de contenido libre.</div>
+				<!-- /tagline -->
+				<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="/wiki/Programaci%C3%B3n_en_C%2B%2B" title="Programación en C++">Programación en C++</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav">
+					Saltar a: <a href="#mw-head">navegación</a>,
+					<a href="#p-search">buscar</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodytext -->
+				<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contenido</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Sobrecarga_de_operadores"><span class="tocnumber">1</span> <span class="toctext">Sobrecarga de operadores</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Mi_primer_sobrecarga"><span class="tocnumber">2</span> <span class="toctext">Mi primer sobrecarga</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Sintaxis_general"><span class="tocnumber">3</span> <span class="toctext">Sintaxis general</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Sobrecarga_permitida_de_operadores"><span class="tocnumber">4</span> <span class="toctext">Sobrecarga permitida de operadores</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Sobrecarga_del_operador_.3C.3C_.28_ostream_.29"><span class="tocnumber">5</span> <span class="toctext">Sobrecarga del operador &lt;&lt; ( ostream )</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Sobrecarga_del_operador_.3E.3E_.28_istream_.29"><span class="tocnumber">6</span> <span class="toctext">Sobrecarga del operador &gt;&gt; ( istream )</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Operadores_amigos_.28_friend_.29"><span class="tocnumber">7</span> <span class="toctext">Operadores amigos ( friend )</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Sobrecarga_de_operadores_dentro_de_una_clase"><span class="tocnumber">8</span> <span class="toctext">Sobrecarga de operadores dentro de una clase</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h2><span class="mw-headline" id="Sobrecarga_de_operadores">Sobrecarga de operadores</span></h2>
+<div style="text-align:justify; padding:40px; background:#FFFFEE">
+<p>La sobrecarga de operadores es uno de los mecanismos que nos permite ampliar las capacidades de los lenguajes de programación orientados a objetos. En C++, la declaración y definición de una sobrecarga de operador es muy similar a la declaración y definición de una función cualquiera. El ejemplo más sencillo de una sobrecarga de operadores nos lo da el lenguaje mismo, es decir, en una operación aritmética (por ejemplo, una suma ) el compilador determina el tipo de operación requerida de acuerdo con el tipo de datos involucrados. Vamos a suponer que se tienen las variables: <b>int A, B;</b> <b>double X, Y</b>; <b>int R;</b> y las siguientes instrucciones:</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+R <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+R <span class="sy1">=</span> A <span class="sy2">+</span> X<span class="sy4">;</span>
+R <span class="sy1">=</span> X <span class="sy2">+</span> Y<span class="sy4">;</span>
+</pre></div>
+</div>
+<p>Ahora bien:</p>
+<ul>
+<li>en el primer caso el compilador determina que el tipo de operación requerida es una suma de enteros debido a que los dos miembros ( A y B ) de la suma son del tipo entero.</li>
+<li>en el segundo caso parece ser que las cosas no son tan claras, ya que en este los miembros involucrados en la suma son de tipos diferentes, sin embargo el compilador determinará el tipo de operación requerida y depositará en el resultado ( R )el valor resultante redondeado.</li>
+<li>en el tercero y último de los casos el compilador determina que el tipo de operación requerida es una suma de reales debido a que los dos miembros ( X e Y ) de la suma son del tipo double. También en este caso el resultado de la suma se redondea antes de ponerlo en R.</li>
+</ul>
+<h2><span class="mw-headline" id="Mi_primer_sobrecarga">Mi primer sobrecarga</span></h2>
+<p>Para poner un ejemplo práctico de sobrecarga del operador de suma ( <b>+</b> ) vamos a considerar el caso de la clase <b>pareja</b> mostrada en seguida:</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="kw2">class</span> Pareja <span class="br0">{</span>
+<span class="kw2">public</span><span class="sy4">:</span>
+    <span class="kw4">double</span> a, b<span class="sy4">;</span>
+ 
+    <span class="co1">// constructor parametrizado</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">double</span> a,<span class="kw4">const</span> <span class="kw4">double</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> a<span class="sy4">;</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>, <span class="nu0">75</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="br0">(</span><span class="nu0">150</span>, <span class="nu0">175</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja C <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<p>Si usted trata de compilar el programa anterior descubrirá que el compilador se queja, es decir, el compilador no sabe que hacer en el caso de la instrucción <b>Pareja C = A + B;</b> aunque es evidente que se trata de la declaracion del objeto C y que el mismo se espera que sea igual a la suma de los objetos A y B. El error se debe al hecho de que el tipo <b>Pareja</b> es en realidad una clase y no un tipo primitivo y, en consecuencia, se debe de adiestrar al mismo compilador para que éste sepa de que manera hara la suma de dos objetos del tipo Pareja. Así, para solucionar el error vamos a sobrecargar el operador <b>+</b> para trabajar la suma de dos de dichos objetos. Vamos:</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="co1">// Titulo..: programa sobrecarga01.cpp</span>
+<span class="co1">// Objetivo: demostración de sobrecarga de operadores</span>
+<span class="co1">// Autor...: Oscar E. Palacios</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="kw2">using</span> <span class="kw2">namespace</span> std<span class="sy4">;</span>
+ 
+<span class="kw2">class</span> Pareja <span class="br0">{</span>
+<span class="kw2">public</span><span class="sy4">:</span>
+    <span class="kw4">double</span> a, b<span class="sy4">;</span>
+ 
+    <span class="co1">// constructor parametrizado</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">double</span> a,<span class="kw4">const</span> <span class="kw4">double</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> a<span class="sy4">;</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// Sobrecarga del operador +</span>
+Pareja<span class="sy3">&amp;</span> operator <span class="sy2">+</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p1,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p2<span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">return</span> <span class="sy2">*</span><span class="br0">(</span><span class="kw3">new</span> Pareja<span class="br0">(</span>p1.<span class="me1">a</span> <span class="sy2">+</span> p2.<span class="me1">a</span>, p1.<span class="me1">b</span> <span class="sy2">+</span> p2.<span class="me1">b</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>, <span class="nu0">75</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="br0">(</span><span class="nu0">150</span>, <span class="nu0">175</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja C <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+ 
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">','</span> <span class="sy1">&lt;&lt;</span> A.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"B = "</span> <span class="sy1">&lt;&lt;</span> B.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">','</span> <span class="sy1">&lt;&lt;</span> B.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">','</span> <span class="sy1">&lt;&lt;</span> C.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h2><span class="mw-headline" id="Sintaxis_general">Sintaxis general</span></h2>
+<p>Tal y como usted lo habrá notado, la declaración de sobrecarga en el programa anterior es lo más parecido a una función, es decir, la sintaxis general para sobrecargar uno operador cualquiera es:</p>
+<pre>
+tipo  operator + (lista de parámetros);
+</pre>
+<p>en donde,</p>
+<ol>
+<li>tipo se refiere al tipo regresado por el operador</li>
+<li>operator es una palabra reservada y debe aparecer en toda declaración de sobrecarga de operadores</li>
+<li>el simbolo <b>+</b> está en representación de cualquier operador</li>
+<li>lista de parámetros indica los argumentos sobre los que operarará la función de sobrecarga</li>
+</ol>
+<p><b>Nota:</b> en el caso de que el operador sobrecargado se hace para una clase específica la sintaxis se extiende de la siguiente manera:</p>
+<pre>
+tipo  nombre_clase::operator + (lista de parámetros);
+</pre>
+<p>Regresando al caso de la clase Pareja, específicamente al operador <b>+</b> de sobrecarga para dicha clase, nos damos cuenta que dicho operador opera sobre dos objetos de dicha clase y también devuelve un resultado de la misma clase. Esto es lo más recomendable ya que si usted recuerda el compilador regresa un resultado entero si es que (por ejemplo) se le da una instrucción como: <b>R = 100 + 23;</b>. En todo caso, el resultado devuelto por los operadores sobrecargados es responsabilidad del que esta programando</p>
+<h2><span class="mw-headline" id="Sobrecarga_permitida_de_operadores">Sobrecarga permitida de operadores</span></h2>
+<p>En C++ no es posible sobrecargar todos los operadores, pero al menos la mayoría de ellos sí. Los operadores que no se pueden sobrecargar son: <b>#</b>, <b>##</b>, <b>.</b>, <b>:</b>, <b>.*</b>, o <b>?</b>.</p>
+<h2><span class="mw-headline" id="Sobrecarga_del_operador_.3C.3C_.28_ostream_.29">Sobrecarga del operador &lt;&lt; ( ostream )</span></h2>
+<p>Normalmente cuando se escribe una clase y se desea que el <b>stream</b> estándar de salida ( <b>cout</b> ) pueda mostrar una representación de su valor se debe de sobrecargar el operador &lt;&lt;. Para mostrar un ejemplo retomemos el programa sobrecarga01.cpp ( visto arriba ), en el mismo se imprimen por medio de <b>cout</b> los miembros ( a y b ) de los objetos <b>A</b>, <b>B</b> y <b>C</b>.</p>
+<pre>
+cout &lt;&lt; "A = " &lt;&lt; A.a &lt;&lt; ',' &lt;&lt; A.b &lt;&lt; "\n";
+cout &lt;&lt; "B = " &lt;&lt; B.a &lt;&lt; ',' &lt;&lt; B.b &lt;&lt; "\n";
+cout &lt;&lt; "C = " &lt;&lt; C.a &lt;&lt; ',' &lt;&lt; C.b &lt;&lt; "\n";
+</pre>
+<p>Usted puede ver cómo para cada uno de los miembros de los objetos se debe de usar el operador de dirección ( <b>.</b> ), pues bien, nuestro objetivo es lograr que dado un objeto de la clase Pareja éste pueda ser desplegado por cout y para ello haremos la sobrecarga de operador &lt;&lt; con el fin de que pueda operar con objetos de la clase mencionada. Veamos:</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="co1">// Titulo..: programa sobrecarga03.cpp</span>
+<span class="co1">// Objetivo: demostración de sobrecarga de operadores</span>
+<span class="co1">// Autor...: Oscar E. Palacios</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="kw2">using</span> <span class="kw2">namespace</span> std<span class="sy4">;</span>
+ 
+<span class="kw2">class</span> Pareja <span class="br0">{</span>
+<span class="kw2">public</span><span class="sy4">:</span>
+    <span class="kw4">double</span> a, b<span class="sy4">;</span>
+ 
+    <span class="co1">// constructor parametrizado</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">double</span> a,<span class="kw4">const</span> <span class="kw4">double</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> a<span class="sy4">;</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// Sobrecarga del operador +</span>
+Pareja<span class="sy3">&amp;</span> operator <span class="sy2">+</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p1,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p2<span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">return</span> <span class="sy2">*</span><span class="br0">(</span><span class="kw3">new</span> Pareja<span class="br0">(</span>p1.<span class="me1">a</span> <span class="sy2">+</span> p2.<span class="me1">a</span>, p1.<span class="me1">b</span> <span class="sy2">+</span> p2.<span class="me1">b</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// Sobrecarga del operador &lt;&lt; para la clase Pareja</span>
+ostream<span class="sy3">&amp;</span> operator <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>ostream <span class="sy3">&amp;</span>o,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    o <span class="sy1">&lt;&lt;</span> <span class="st0">"("</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">", "</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">")"</span><span class="sy4">;</span>
+    <span class="kw1">return</span> o<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>, <span class="nu0">75</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="br0">(</span><span class="nu0">150</span>, <span class="nu0">175</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja C <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+ 
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"B = "</span> <span class="sy1">&lt;&lt;</span> B <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h2><span class="mw-headline" id="Sobrecarga_del_operador_.3E.3E_.28_istream_.29">Sobrecarga del operador &gt;&gt; ( istream )</span></h2>
+<p>Así como el operador &lt;&lt; debe ser sobrecargado, lo mismo es cierto para el operador <b>&gt;&gt;</b> para poder ser usado con el <b>stream</b> estándar de entrada ( <b>cin</b> ). Retomaremos nuevamente a la clase Pareja para dar un ejemplo.</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="co1">// Titulo..: programa sobrecarga03.cpp</span>
+<span class="co1">// Objetivo: demostración de sobrecarga de operadores</span>
+<span class="co1">// Autor...: Oscar E. Palacios</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="kw2">using</span> <span class="kw2">namespace</span> std<span class="sy4">;</span>
+ 
+<span class="co1">// inserte aquí la clase Pareja y los operadores sobrecargados vistos</span>
+<span class="co1">// en el programa anterior. Se deberá agregar un constructor en la clase Pareja como el siguiente:</span>
+<span class="coMULTI">/*Pareja()
+        {
+                this-&gt;a=0;
+                this-&gt;b=0;
+        }*/</span>
+ 
+<span class="co1">// Sobrecarga del operador &gt;&gt; para la clase Pareja</span>
+istream<span class="sy3">&amp;</span> operator <span class="sy1">&gt;&gt;</span> <span class="br0">(</span>istream <span class="sy3">&amp;</span>i, Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"Introducir valores para ( a, b) : "</span><span class="sy4">;</span>
+    i <span class="sy1">&gt;&gt;</span> p.<span class="me1">a</span> <span class="sy1">&gt;&gt;</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    i.<span class="me1">ignore</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> i<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>, <span class="nu0">75</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="sy4">;</span>
+    <span class="kw3">cin</span> <span class="sy1">&gt;&gt;</span> B<span class="sy4">;</span>
+    Pareja C <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+ 
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"B = "</span> <span class="sy1">&lt;&lt;</span> B <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h2><span class="mw-headline" id="Operadores_amigos_.28_friend_.29">Operadores amigos ( friend )</span></h2>
+<p>Un operador, amigo al igual que una función amiga, es aquel que aún cuando no es miembro de una clase tiene todos los privilegios de acceso a los miembros de dicha clase. En la sobrecarga de los operadores <b>+</b>, <b>&lt;&lt;</b> y <b>&gt;&gt;</b> para la clase Pareja de los programas anteriores se puede notar que dichos operadores no son parte de la clase Pareja, sino más bien estos operan sobre objetos de dicha clase y es a travez de dichos objetos que pueden manipular a los miembros de la clase. Ahora bien, no hemos tenido ningún problema debido a que todos los miembros de Pareja han sido declarados como públicos (<b>public:</b>), pero que sucede si un operador o una función que no sea parte de la clase trata de acceder a los miembros privados o protegidos de ésta, en estos casos el compilador reportaría el error indicando que tal o cúal miembro es privado dentro de cierto contexto. Luego, si queremos que un operador o función que no es miembro de una clase pueda acceder a los miembros publicos, privados o protegidos deberemos declarar a dicho operador o función como amigo (<b>friend</b>) dentro de la clase específica. Para mostrar un ejemplo modificaremos la clase Pareja, en donde sus atributos serán privados.</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="co1">// Titulo..: programa sobrecarga04.cpp</span>
+<span class="co1">// Objetivo: demostración de sobrecarga de operadores</span>
+<span class="co1">// Autor...: Oscar E. Palacios</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+<span class="kw2">using</span> <span class="kw2">namespace</span> std<span class="sy4">;</span>
+ 
+<span class="kw2">class</span> Pareja <span class="br0">{</span>
+ 
+<span class="kw2">private</span><span class="sy4">:</span>
+    <span class="kw4">double</span> a, b<span class="sy4">;</span>
+ 
+<span class="kw2">public</span><span class="sy4">:</span> 
+    <span class="co1">// constructor parametrizado</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">double</span> a,<span class="kw4">const</span> <span class="kw4">double</span> b<span class="br0">)</span>
+    <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> a<span class="sy4">;</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="kw2">friend</span> Pareja<span class="sy3">&amp;</span> operator <span class="sy2">+</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p1,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p2<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw2">friend</span> ostream<span class="sy3">&amp;</span> operator <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>ostream <span class="sy3">&amp;</span>o,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// Sobrecarga del operador + para la clase Pareja</span>
+Pareja<span class="sy3">&amp;</span> operator <span class="sy2">+</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p1,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p2<span class="br0">)</span>
+<span class="br0">{</span>
+  <span class="kw1">return</span> <span class="sy2">*</span><span class="br0">(</span><span class="kw3">new</span> Pareja<span class="br0">(</span>p1.<span class="me1">a</span> <span class="sy2">+</span> p2.<span class="me1">a</span>, p1.<span class="me1">b</span> <span class="sy2">+</span> p2.<span class="me1">b</span><span class="br0">)</span> <span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// Sobrecarga del operador &lt;&lt; para la clase Pareja</span>
+ostream<span class="sy3">&amp;</span> operator <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>ostream <span class="sy3">&amp;</span>o,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    o <span class="sy1">&lt;&lt;</span> <span class="st0">"("</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">", "</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">")"</span><span class="sy4">;</span>
+    <span class="kw1">return</span> o<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>, <span class="nu0">75</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="br0">(</span><span class="nu0">150</span>, <span class="nu0">175</span> <span class="br0">)</span><span class="sy4">;</span>
+    Pareja C <span class="sy1">=</span> A <span class="sy2">+</span> B<span class="sy4">;</span>
+ 
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"B = "</span> <span class="sy1">&lt;&lt;</span> B <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+ 
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+<h2><span class="mw-headline" id="Sobrecarga_de_operadores_dentro_de_una_clase">Sobrecarga de operadores dentro de una clase</span></h2>
+<p>Tal y como hemos dicho antes, los operadores que hemos sobrecargado para la clase Pareja ( de los ejemplos anteriores ) no son parte de la clase, pero en la mayoría de las veces se verá que los operadores para una clase específica se deben sobrecargar dentro de la misma clase, es decir, dichos operadores serán miembros de la clase. Antes de sobrecargar cualquier operador para una clase se deben tener en cuenta los siguientes factores:</p>
+<ol>
+<li>Los operadores <b>binarios</b> se declaran con un solo parámetro, ya que el primer parámetro es pasado por el programa como <b>this</b>, es decir, un puntero al mismo objeto.</li>
+<li>Los operadores <b>unarios</b> se declaran sin paramétros, ya que el único parámetro es pasado por el programa como <b>this</b>.</li>
+</ol>
+<pre>
+Nota:
+Los operadores binarios son aquellos que poseen dos partes ( izquierda y derecha),
+por ejemplo, una operación de suma requiere dos operandos ( o1 + o2 ).
+
+Los operadores unarios son aquellos que poseen solo una parte, por ejemplo, una operación
+de incremento ( o1 ++ ).
+</pre>
+<p>Con el propósito de ver un ejemplo práctico vamos a retomar una vez más la tan famosa clase Pareja, salvo que en esta ocasión vamos a sobrecargar dentro de la misma a los operadores binarios: <b>+</b> (suma), <b>-</b> (resta), <b>*</b> (multiplicación) y <b>/</b> (división); el operador de asignación (<b>=</b>); el operador de incremento (<b>++</b>) y el operador de comparación (<b>==</b>).</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;">
+<div class="cpp source-cpp">
+<pre class="de1">
+<span class="co1">// Programa: sobrecarga05.cpp</span>
+<span class="co1">// Objetivo: mostrar sobrecarga de operadores</span>
+<span class="co1">// Autor...: Oscar Edmundo Palacios.</span>
+<span class="co2">#include &lt;iostream&gt;</span>
+ 
+<span class="kw2">using</span> <span class="kw2">namespace</span> std<span class="sy4">;</span>
+ 
+<span class="kw2">class</span> Pareja <span class="br0">{</span>
+ 
+<span class="kw2">private</span><span class="sy4">:</span>
+    <span class="kw4">int</span> a, b<span class="sy4">;</span>
+ 
+<span class="kw2">public</span><span class="sy4">:</span>
+    <span class="co1">// constructor base</span>
+    Pareja<span class="br0">(</span><span class="br0">)</span> <span class="sy4">:</span> a<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span>, b<span class="br0">(</span><span class="nu0">0</span><span class="br0">)</span> <span class="br0">{</span><span class="br0">}</span>
+ 
+    <span class="co1">// constructor parametrizado</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> <span class="kw4">int</span> a,<span class="kw4">const</span> <span class="kw4">int</span> b<span class="br0">)</span> <span class="br0">{</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> a<span class="sy4">;</span>
+        this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> b<span class="sy4">;</span>
+    <span class="br0">}</span>
+ 
+    <span class="co1">// constructor de copia</span>
+    Pareja<span class="br0">(</span><span class="kw4">const</span> Pareja<span class="sy3">&amp;</span><span class="br0">)</span><span class="sy4">;</span>
+ 
+    <span class="co1">// operadores miembros</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy2">+</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy2">-</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy2">*</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy2">/</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    Pareja<span class="sy3">&amp;</span> operator <span class="sy2">++</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw4">bool</span>    operator <span class="sy1">==</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span> <span class="kw4">const</span><span class="sy4">;</span>
+ 
+    <span class="co1">// operadores no miembros</span>
+    <span class="kw2">friend</span> ostream<span class="sy3">&amp;</span> operator <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>ostream <span class="sy3">&amp;</span>o,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw2">friend</span> istream<span class="sy3">&amp;</span> operator <span class="sy1">&gt;&gt;</span> <span class="br0">(</span>istream <span class="sy3">&amp;</span>o, Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span><span class="sy4">;</span>
+<span class="br0">}</span><span class="sy4">;</span>
+ 
+<span class="co1">// implementacion de los operadores para la clase Pareja</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy4">::</span><span class="me2">Pareja</span><span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="sy2">*</span><span class="kw3">this</span><span class="sy1">=</span>p<span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy2">+</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy2">+</span><span class="sy1">=</span> p.<span class="me1">a</span><span class="sy4">;</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy2">+</span><span class="sy1">=</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy2">-</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy2">-</span><span class="sy1">=</span> p.<span class="me1">a</span><span class="sy4">;</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy2">-</span><span class="sy1">=</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy2">*</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy2">*</span><span class="sy1">=</span> p.<span class="me1">a</span><span class="sy4">;</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy2">*</span><span class="sy1">=</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy2">/</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">a</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy2">/</span><span class="sy1">=</span> p.<span class="me1">a</span><span class="sy4">;</span>
+    <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">b</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy2">/</span><span class="sy1">=</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy1">=</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw1">if</span><span class="br0">(</span><span class="kw3">this</span><span class="sy3">!</span><span class="sy1">=</span><span class="sy3">&amp;</span>p<span class="br0">)</span><span class="br0">{</span> <span class="co1">//Comprueba que no se esté intentanod igualar un objeto a sí mismo</span>
+        <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">a</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">=</span> p.<span class="me1">a</span><span class="sy4">;</span>
+        <span class="kw1">if</span> <span class="br0">(</span>p.<span class="me1">b</span> <span class="sy3">!</span><span class="sy1">=</span> <span class="nu0">0</span><span class="br0">)</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">=</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    <span class="br0">}</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">//....................................</span>
+Pareja<span class="sy3">&amp;</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy2">++</span> <span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy2">++</span><span class="sy4">;</span>
+    this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy2">++</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="sy2">*</span><span class="kw3">this</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">//....................................</span>
+<span class="kw4">bool</span> Pareja<span class="sy4">::</span><span class="me2">operator</span> <span class="sy1">==</span> <span class="br0">(</span><span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span> <span class="kw4">const</span>
+<span class="br0">{</span>
+    <span class="kw1">return</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>a <span class="sy1">==</span> p.<span class="me1">a</span> <span class="sy3">&amp;&amp;</span> this<span class="sy2">-</span><span class="sy1">&gt;</span>b <span class="sy1">==</span> p.<span class="me1">b</span><span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+<span class="co1">// implemetaci¢n de operadores no miembros</span>
+ostream<span class="sy3">&amp;</span> operator <span class="sy1">&lt;&lt;</span> <span class="br0">(</span>ostream <span class="sy3">&amp;</span>o,<span class="kw4">const</span> Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    o <span class="sy1">&lt;&lt;</span> <span class="st0">"("</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">a</span> <span class="sy1">&lt;&lt;</span> <span class="st0">", "</span> <span class="sy1">&lt;&lt;</span> p.<span class="me1">b</span> <span class="sy1">&lt;&lt;</span> <span class="st0">")"</span><span class="sy4">;</span>
+    <span class="kw1">return</span> o<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+istream<span class="sy3">&amp;</span> operator <span class="sy1">&gt;&gt;</span> <span class="br0">(</span>istream <span class="sy3">&amp;</span>i, Pareja <span class="sy3">&amp;</span>p<span class="br0">)</span>
+<span class="br0">{</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"Introducir valores para ( a, b) :"</span><span class="sy4">;</span>
+    i <span class="sy1">&gt;&gt;</span> p.<span class="me1">a</span> <span class="sy1">&gt;&gt;</span> p.<span class="me1">b</span><span class="sy4">;</span>
+    i.<span class="me1">ignore</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> i<span class="sy4">;</span>
+<span class="br0">}</span>
+ 
+ 
+<span class="co1">// prueba para la clase Pareja</span>
+<span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+<span class="br0">{</span>
+    Pareja A<span class="br0">(</span><span class="nu0">50</span>,  <span class="nu0">75</span><span class="br0">)</span><span class="sy4">;</span>
+    Pareja B<span class="br0">(</span><span class="nu0">100</span>, <span class="nu0">25</span><span class="br0">)</span><span class="sy4">;</span>
+    Pareja C<span class="sy4">;</span>
+ 
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"B = "</span> <span class="sy1">&lt;&lt;</span> B <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"........................."</span> <span class="sy1">&lt;&lt;</span> endl<span class="sy4">;</span>
+    C <span class="sy1">=</span> A <span class="sy2">*</span> B<span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A = "</span> <span class="sy1">&lt;&lt;</span> A <span class="sy1">&lt;&lt;</span> <span class="st0">"<span class="es1">\n</span>"</span><span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C <span class="sy1">&lt;&lt;</span> endl<span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"........................."</span> <span class="sy1">&lt;&lt;</span> endl<span class="sy4">;</span>
+ 
+    <span class="sy2">++</span>C<span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"C = "</span> <span class="sy1">&lt;&lt;</span> C <span class="sy1">&lt;&lt;</span> endl<span class="sy4">;</span>
+    <span class="kw3">cout</span> <span class="sy1">&lt;&lt;</span> <span class="st0">"A == B "</span> <span class="sy1">&lt;&lt;</span> <span class="br0">(</span> <span class="br0">(</span>A<span class="sy1">==</span>B<span class="br0">)</span> <span class="sy4">?</span> <span class="st0">"Si"</span><span class="sy4">:</span> <span class="st0">"No"</span> <span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw3">cin</span>.<span class="me1">get</span><span class="br0">(</span><span class="br0">)</span><span class="sy4">;</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy4">;</span>
+<span class="br0">}</span>
+</pre></div>
+</div>
+</div>
+<table align="center" cellpadding="12">
+<tr>
+<td>← <a href="/wiki/Programaci%C3%B3n_en_C%2B%2B/Objetos_y_Clases" title="Programación en C++/Objetos y Clases">Objetos y Clases</a></td>
+<td><a href="#Sobrecarga_de_operadores">Arriba</a></td>
+<td><a href="/wiki/Programaci%C3%B3n_en_C%2B%2B/Herencia" title="Programación en C++/Herencia">Herencia</a> →</td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 119/1000000
+Post-expand include size: 0/2048000 bytes
+Template argument size: 0/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key eswikibooks:pcache:idhash:19627-0!*!0!!es!*!edit=0 and timestamp 20110804134341 -->
+<div class="printfooter">
+Obtenido de «<a href="http://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores">http://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores</a>»</div>
+				<!-- /bodytext -->
+								<!-- catlinks -->
+				<div id='catlinks' class='catlinks catlinks-allhidden'></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Herramientas personales</h5>
+	<ul>
+					<li  id="pt-login"><a href="/w/index.php?title=Especial:Entrar&amp;returnto=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;returntoquery=printable%3Dyes" title="Te recomendamos iniciar sesión, sin embargo no es obligatorio [o]" accesskey="o">Iniciar sesión / crear cuenta</a></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Espacios de nombres</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores"  title="Ver el artículo [c]" accesskey="c">Página</a></span></li>
+					<li  id="ca-talk"><span><a href="/wiki/Discusi%C3%B3n:Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores"  title="Discusión acerca del artículo [t]" accesskey="t">discusión</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+		<h5><span>Variantes</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Vistas</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="/wiki/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores" >Leer</a></span></li>
+					<li id="ca-edit"><span><a href="/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;action=edit"  title="Puedes editar esta página. Utiliza el botón de previsualización antes de guardar [e]" accesskey="e">Editar</a></span></li>
+					<li id="ca-history" class="collapsible "><span><a href="/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;action=history"  title="Versiones anteriores de esta página y sus autores [h]" accesskey="h">Ver historial</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Acciones</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Buscar</label></h5>
+	<form action="/w/index.php" id="searchform">
+		<input type='hidden' name="title" value="Especial:Buscar"/>
+				<div id="simpleSearch">
+						<input id="searchInput" name="search" type="text"  title="Buscar en este wiki [f]" accesskey="f"  value="" />
+						<button id="searchButton" type='submit' name='button'  title="Busca este texto en las páginas"><img src="http://bits.wikimedia.org/skins-1.17/vector/images/search-ltr.png?301-3" alt="Buscar" /></button>
+					</div>
+			</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(http://upload.wikimedia.org/wikipedia/commons/0/05/Wikibooks-logo-es.png);" href="/wiki/Portada"  title="Visitar la página principal"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navegación</h5>
+	<div class="body">
+				<ul>
+					<li id="n-mainpage"><a href="/wiki/Portada" title="Visitar la página principal [z]" accesskey="z">Portada</a></li>
+					<li id="n-portal"><a href="/wiki/Wikilibros:Portal_de_la_comunidad" title="Acerca del proyecto, lo que puedes hacer, dónde encontrar información">Portal de la comunidad</a></li>
+					<li id="n-Caf.C3.A9"><a href="/wiki/Wikilibros:Caf%C3%A9">Café</a></li>
+					<li id="n-currentevents"><a href="/wiki/Categor%C3%ADa:Libros" title="Información de contexto sobre acontecimientos actuales">Categorías de libros</a></li>
+					<li id="n-recentchanges"><a href="/wiki/Especial:CambiosRecientes" title="La lista de cambios recientes en el wiki [r]" accesskey="r">Cambios recientes</a></li>
+					<li id="n-randompage"><a href="/wiki/Especial:Aleatoria" title="Cargar un libro seleccionado al azar [x]" accesskey="x">Libro aleatorio</a></li>
+					<li id="n-help"><a href="/wiki/Ayuda:Contenidos" title="El lugar para aprender">Ayuda</a></li>
+					<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Special:Landingcheck?landing_page=WMFJA085&amp;language=es&amp;utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=20101204SB002" title="Apóyanos">Donativos</a></li>
+				</ul>
+			</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Imprimir/exportar</h5>
+	<div class="body">
+				<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="/w/index.php?title=Especial:Libro&amp;bookcmd=book_creator&amp;referer=Programaci%C3%B3n+en+C%2B%2B%2FSobrecarga+de+Operadores" title="Crear un libro o colección de página" rel="nofollow">Crear un libro</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Especial:Libro&amp;bookcmd=render_article&amp;arttitle=Programaci%C3%B3n+en+C%2B%2B%2FSobrecarga+de+Operadores&amp;oldid=170270&amp;writer=rl" title="Descargar una versión PDF de esta página wiki" rel="nofollow">Descargar como PDF</a></li></ul>			</div>
+</div>
+
+<!-- /coll-print_export -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id="p-tb">
+	<h5>Herramientas</h5>
+	<div class="body">
+		<ul>
+					<li id="t-whatlinkshere"><a href="/wiki/Especial:LoQueEnlazaAqu%C3%AD/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores" title="Lista de todas las páginas del wiki que enlazan aquí [j]" accesskey="j">Lo que enlaza aquí</a></li>
+						<li id="t-recentchangeslinked"><a href="/wiki/Especial:CambiosEnEnlazadas/Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores" title="Cambios recientes en las páginas que enlazan con ésta [k]" accesskey="k">Cambios relacionados</a></li>
+																																					<li id="t-upload"><a href="http://commons.wikimedia.org/wiki/Commons:Upload/es" title="Subir imágenes o archivos multimedia [u]" accesskey="u">Subir archivo</a></li>
+											<li id="t-specialpages"><a href="/wiki/Especial:P%C3%A1ginasEspeciales" title="Lista de todas las páginas especiales [q]" accesskey="q">Páginas especiales</a></li>
+											<li id="t-permalink"><a href="/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;oldid=170270" title="Enlace permanente a esta versión de la página">Enlace permanente</a></li>
+						</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+											<ul id="footer-info">
+																	<li id="footer-info-lastmod"> Esta página fue modificada por última vez el 22 abr 2011, a las 05:15.</li>
+																							<li id="footer-info-copyright">El texto está disponible bajo la <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.es">Licencia Creative Commons Atribución/Compartir-Igual 3.0</a>;
+cláusulas adicionales pueden aplicar.
+Véase <a href="http://wikimediafoundation.org/wiki/Términos_de_Uso">los términos de uso</a> para más detalles.</li>
+															</ul>
+															<ul id="footer-places">
+																	<li id="footer-places-privacy"><a href="/wiki/Wikilibros:Pol%C3%ADtica_de_protecci%C3%B3n_de_datos" title="Wikilibros:Política de protección de datos">Política de protección de datos</a></li>
+																							<li id="footer-places-about"><a href="/wiki/Wikilibros:Acerca_de" title="Wikilibros:Acerca de">Acerca de Wikilibros</a></li>
+																							<li id="footer-places-disclaimer"><a href="/wiki/Wikilibros:Limitaci%C3%B3n_general_de_responsabilidad" title="Wikilibros:Limitación general de responsabilidad">Aviso legal</a></li>
+																							<li id="footer-places-mobileview"><a href='/w/index.php?title=Programaci%C3%B3n_en_C%2B%2B/Sobrecarga_de_Operadores&amp;printable=yes&amp;useformat=mobile'>Versión para móviles</a></li>
+															</ul>
+											<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="http://wikimediafoundation.org/"><img src="http://bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="http://www.mediawiki.org/"><img src="http://bits.wikimedia.org/skins-1.17/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.loader.load(["mediawiki.legacy.wikibits", "mediawiki.util", "mediawiki.legacy.ajax", "mediawiki.legacy.mwsuggest", "ext.vector.collapsibleNav", "ext.vector.collapsibleTabs", "ext.vector.editWarning", "ext.vector.simpleSearch"]);
+	mediaWiki.loader.go();
+}
+</script>
+
+<script src="/w/index.php?title=Especial:BannerController&amp;cache=/cn.js&amp;301-3" type="text/javascript"></script>
+<script src="http://bits.wikimedia.org/es.wikibooks.org/load.php?debug=false&amp;lang=es&amp;modules=site&amp;only=scripts&amp;printable=1&amp;skin=vector" type="text/javascript"></script>
+<script type="text/javascript">if ( window.mediaWiki ) {
+	mediaWiki.user.options.set({"ccmeonemails":0,"cols":80,"contextchars":50,"contextlines":5,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":1,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,
+	"watchlistdays":"3","watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"vector-simplesearch":1,"useeditwarning":1,"vector-collapsiblenav":1,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"variant":"es","language":"es","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs102":false,"searchNs103":false});;mediaWiki.loader.state({"user.options":"ready"});
+	
+	/* cache key: eswikibooks:resourceloader:filter:minify-js:5:f85574d150e248656cf109ad5d87ae84 */
+}
+</script><script type="text/javascript" src="//geoiplookup.wikimedia.org/"></script>		<!-- fixalpha -->
+		<script type="text/javascript"> if ( window.isMSIE55 ) fixalpha(); </script>
+		<!-- /fixalpha -->
+		<!-- Served by srv158 in 0.093 secs. -->			</body>
+</html>

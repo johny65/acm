@@ -1,0 +1,2314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<script type="text/javascript">(function() { var a=window;function c(b){this.t={};this.tick=function(d,i,e){e=e?e:(new Date).getTime();this.t[d]=[e,i]};this.tick("start",null,b)}var f=new c;a.jstiming={Timer:c,load:f};try{var g=null;if(a.chrome&&a.chrome.csi)g=Math.floor(a.chrome.csi().pageT);if(g==null)if(a.gtbExternal)g=a.gtbExternal.pageT();if(g==null)if(a.external)g=a.external.pageT;if(g)a.jstiming.pt=g}catch(h){};a.tickAboveFold=function(b){b=b;var d=0;if(b.offsetParent){do d+=b.offsetTop;while(b=b.offsetParent)}b=d;b<=750&&a.jstiming.load.tick("aft")};var j=false;function k(){if(!j){j=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",k,false):a.attachEvent("onscroll",k);
+ })();</script>
+<meta content='true' name='MSSmartTagsPreventParsing'/>
+<meta content='blogger' name='generator'/>
+<link href='http://www.blogger.com/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
+<link href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html' rel='canonical'/>
+<link rel="alternate" type="application/atom+xml" title="I, ME AND MYSELF !!! - Atom" href="http://zobayer.blogspot.com/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="I, ME AND MYSELF !!! - RSS" href="http://zobayer.blogspot.com/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="I, ME AND MYSELF !!! - Atom" href="http://www.blogger.com/feeds/3675582796619590206/posts/default" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=3675582796619590206" />
+<link rel="alternate" type="application/atom+xml" title="I, ME AND MYSELF !!! - Atom" href="http://zobayer.blogspot.com/feeds/8410090690257841945/comments/default" />
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } })(); </script> <![endif]-->
+<title>I, ME AND MYSELF !!!: Segmented Sieve</title>
+<link type='text/css' rel='stylesheet' href='http://www.blogger.com/static/v1/widgets/1153781736-widget_css_bundle.css' />
+<link type='text/css' rel='stylesheet' href='http://www.google.com/uds/css/gsearch.css' />
+ <link rel="stylesheet" type="text/css" href="http://www.blogger.com/dyn-css/authorization.css?targetBlogID=3675582796619590206&zx=6e50cadc-1e88-470a-bd6f-9cee8b14bcb0"/>
+<style type="text/css">#navbar-iframe { display:block }
+</style>
+
+<style id='page-skin-1' type='text/css'><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Stretch Denim
+Designer: Darren Delaye
+URL:      www.DarrenDelaye.com
+Date:     11 Jul 2006
+-----------------------------------------------
+Modified Template Style
+Name:     myTemplate
+Designer: Zobayer Hasan
+URL:      www.sites.google.com/site/zobayerbn
+Date:     30 Dec 2009
+Feature:  Supports code syntax highlighting.
+-----------------------------------------------
+*/
+/* Variable definitions
+====================
+<Variable name="bgColor" description="Page Background Color"
+type="color" default="#efefef">
+<Variable name="textColor" description="Text Color"
+type="color" default="#333333">
+<Variable name="linkColor" description="Link Color"
+type="color" default="#336699">
+<Variable name="headerBgColor" description="Page Header Background Color"
+type="color" default="#336699">
+<Variable name="headerTextColor" description="Page Header Text Color"
+type="color" default="#ffffff">
+<Variable name="headerCornersColor" description="Page Header Corners Color"
+type="color" default="#528bc5">
+<Variable name="mainBgColor" description="Main Background Color"
+type="color" default="#ffffff">
+<Variable name="borderColor" description="Border Color"
+type="color" default="#cccccc">
+<Variable name="dateHeaderColor" description="Date Header Color"
+type="color" default="#999999">
+<Variable name="sidebarTitleBgColor" description="Sidebar Title Background Color"
+type="color" default="#ffd595">
+<Variable name="sidebarTitleTextColor" description="Sidebar Title Text Color"
+type="color" default="#333333">
+<Variable name="bodyFont" description="Text Font"
+type="font" default="normal normal 100% Verdana, Arial, Sans-serif;">
+<Variable name="headerFont" description="Page Header Font"
+type="font" default="normal normal 210% Verdana, Arial, Sans-serif;">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+body {
+background: #C3D9FF;
+margin: 0;
+padding: 0px;
+font: x-small Verdana, Arial;
+text-align: center;
+color: #333333;
+font-size/* */:/**/small;
+font-size: /**/small;
+}
+a:link {
+color: #336699;
+}
+a:visited {
+color: #336699;
+}
+a img {
+border-width: 0;
+}
+#outer-wrapper {
+font: normal normal 107% Arial, sans-serif;
+}
+/* Header
+----------------------------------------------- */
+#header-wrapper {
+margin:0;
+padding: 0;
+background-color: #000000;
+text-align: left;
+}
+#header {
+margin: 0 2%;
+background-color: #000000;
+color: #ffffff;
+padding: 0;
+font: normal bold 290% Trebuchet, Trebuchet MS, Arial, sans-serif;
+position: relative;
+}
+h1.title {
+padding-top: 38px;
+margin: 0 1% .1em;
+line-height: 1.2em;
+font-size: 100%;
+}
+h1.title a, h1.title a:visited {
+color: #ffffff;
+text-decoration: none;
+}
+#header .description {
+display: block;
+margin: 0 1%;
+padding: 0 0 40px;
+line-height: 1.4em;
+font-size: 50%;
+}
+/* Content
+----------------------------------------------- */
+.clear {
+clear: both;
+}
+#content-wrapper {
+margin: 0 2%;
+padding: 0 0 15px;
+text-align: left;
+background-color: #ffffff;
+border: 1px solid #0066CC;
+border-top: 0;
+}
+#main-wrapper {
+margin-left: 1%;
+width: 64%;
+float: left;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+margin-right: 1%;
+width: 29%;
+float: right;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2, h3 {
+margin: 0;
+}
+/* Posts
+----------------------------------------------- */
+.date-header {
+margin: 1.5em 0 0;
+font-weight: normal;
+color: #cc0000;
+font-size: 100%;
+}
+.post {
+margin: 0 0 1.5em;
+padding-bottom: 1.5em;
+}
+.post-title {
+margin: 0;
+padding: 0;
+font-size: 125%;
+font-weight: bold;
+line-height: 1.1em;
+}
+.post-title a, .post-title a:visited, .post-title strong {
+text-decoration: none;
+color: #333333;
+font-weight: bold;
+}
+.post div {
+margin: 0 0 .75em;
+line-height: 1.3em;
+}
+.post-footer {
+margin: -.25em 0 0;
+color: #333333;
+font-size: 87%;
+}
+.post-footer .span {
+margin-right: .3em;
+}
+.post img {
+padding: 4px;
+border: 1px solid #0066CC;
+}
+.post blockquote {
+margin: 1em 20px;
+}
+.post blockquote p {
+margin: .75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin: 1em 0;
+color: #cc0000;
+}
+#comments h4 strong {
+font-size: 110%;
+}
+#comments-block {
+margin: 1em 0 1.5em;
+line-height: 1.3em;
+}
+#comments-block dt {
+margin: .5em 0;
+}
+#comments-block dd {
+margin: .25em 0 0;
+}
+#comments-block dd.comment-footer {
+margin: -.25em 0 2em;
+line-height: 1.4em;
+font-size: 78%;
+}
+#comments-block dd p {
+margin: 0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar h2 {
+margin: 1.6em 0 .5em;
+padding: 4px 5px;
+background-color: #e6e6e6;
+font-size: 100%;
+color: #cc0000;
+}
+.sidebar ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.sidebar li {
+margin: 0;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: .5em;
+padding-left: 15px;
+text-indent: -15px;
+line-height: 1.5em;
+}
+.sidebar {
+color: #333333;
+line-height:1.3em;
+}
+.sidebar .widget {
+margin-bottom: 1em;
+}
+.sidebar .widget-content {
+margin: 0 5px;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #0066CC;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font-weight: bold;
+line-height: 1.6em;
+font-size: 78%;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+clear: both;
+text-align: center;
+color: #333333;
+}
+#footer .widget {
+margin:.5em;
+padding-top: 20px;
+font-size: 85%;
+line-height: 1.5em;
+text-align: left;
+}
+/** Page structure tweaks for layout editor wireframe */
+body#layout #header {
+width: 750px;
+}
+
+--></style>
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</script></head>
+<body>
+<div class='navbar section' id='navbar'><div class='widget Navbar' id='Navbar1'><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="http://www.blogger.com/navbar.g?targetBlogID=3675582796619590206&amp;blogName=I%2C+ME+AND+MYSELF+%21%21%21&amp;publishMode=PUBLISH_MODE_BLOGSPOT&amp;navbarType=TAN&amp;layoutType=LAYOUTS&amp;searchRoot=http%3A%2F%2Fzobayer.blogspot.com%2Fsearch&amp;blogLocale=en&amp;homepageUrl=http%3A%2F%2Fzobayer.blogspot.com%2F&amp;targetPostID=8410090690257841945" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="30px" width="100%" id="navbar-iframe" allowtransparency="true" title="Blogger Navigation and Search"></iframe>
+<div></div></div></div>
+<div id='outer-wrapper'><div id='wrap2'>
+<!-- skip links for text browsers -->
+<span id='skiplinks' style='display:none;'>
+<a href='#main'>skip to main </a> |
+      <a href='#sidebar'>skip to sidebar</a>
+</span>
+<div id='header-wrapper'>
+<div class='header section' id='header'><div class='widget Header' id='Header1'>
+<div id='header-inner' style='background-image: url("http://1.bp.blogspot.com/_HQySHsSzRSI/S0Xja7O-bwI/AAAAAAAAAEs/e8KkGo6VQEQ/S1600-R/1.jpg"); background-position: left; width: 500px; min-height: 240px;_height: 240px;background-repeat: no-repeat; '>
+<div class='titlewrapper' style='background: transparent'>
+<h1 class='title' style='background: transparent; border-width: 0px'>
+<a href='http://zobayer.blogspot.com/'>I, ME AND MYSELF !!!</a>
+</h1>
+</div>
+<div class='descriptionwrapper'>
+<p class='description'><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id='content-wrapper'>
+<div id='crosscol-wrapper' style='text-align:center'>
+<div class='crosscol section' id='crosscol'></div>
+</div>
+<div id='main-wrapper'>
+<div class='main section' id='main'><div class='widget CustomSearch' id='CustomSearch1'>
+<div class='widget-content'>
+<div id='CustomSearch1_form'>
+<span class='cse-status'>Loading...</span>
+</div>
+</div>
+<style type='text/css'>
+      #uds-searchControl .gs-result .gs-title,
+      #uds-searchControl .gs-result .gs-title *,
+      #uds-searchControl .gsc-results .gsc-trailing-more-results,
+      #uds-searchControl .gsc-results .gsc-trailing-more-results * {
+        color:#336699;
+      }
+
+      #uds-searchControl .gs-result .gs-title a:visited,
+      #uds-searchControl .gs-result .gs-title a:visited * {
+        color:#336699;
+      }
+
+      #uds-searchControl .gs-relativePublishedDate,
+      #uds-searchControl .gs-publishedDate {
+        color: #cc0000;
+      }
+
+      #uds-searchControl .gs-result a.gs-visibleUrl,
+      #uds-searchControl .gs-result .gs-visibleUrl {
+        color: #336699;
+      }
+
+      #uds-searchControl .gsc-results {
+        border-color: #0066CC;
+        background-color: #ffffff;
+      }
+
+      #uds-searchControl .gsc-tabhActive {
+        border-color: #0066CC;
+        border-top-color: #e6e6e6;
+        background-color: #ffffff;
+        color: #333333;
+      }
+
+      #uds-searchControl .gsc-tabhInactive {
+        border-color: #0066CC;
+        background-color: transparent;
+        color: #336699;
+      }
+
+      #uds-searchClearResults {
+        border-color: #0066CC;
+      }
+
+      #uds-searchClearResults:hover {
+        border-color: #e6e6e6;
+      }
+
+      #uds-searchControl .gsc-cursor-page {
+        color: #336699;
+      }
+
+      #uds-searchControl .gsc-cursor-current-page {
+        color: #333333;
+      }
+    </style>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=CustomSearch&widgetId=CustomSearch1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("CustomSearch1"));' target='configCustomSearch1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Blog' id='Blog1'>
+<div class='blog-posts hfeed'>
+<!-- google_ad_section_start(name=default) -->
+
+        <div class="date-outer">
+      
+<h2 class='date-header'><span>Monday, September 14, 2009</span></h2>
+
+        <div class="date-posts">
+      
+<div class='post-outer'>
+<div class='post hentry'>
+<a name='8410090690257841945'></a>
+<h3 class='post-title entry-title'>
+<a href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html'>Segmented Sieve</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<h3>Memory and time efficient :)</h3><br /><br /><h3>Problem Statement:</h3><br /><div style="text-align: justify;"><p>Your are given two integers <b>a</b> and <b>b</b>. You have to find all the primes within range <b>a</b> and <b>b</b>. Here, <b>1 &le; a &le; b &le; 2<sup>31</sup>-1</b> and <b>b - a &le; 10<sup>5</sup></b>.<br /></p><br /><p><br />Note: You have to handle 1, 2 and even numbers for appropriate case of your own. </p></div><br /><h3>Solution:</h3><br /><pre class="brush: cpp"><br />#include &lt;string.h&gt;<br /><br />#define MAX 46656<br />#define LMT 216<br />#define LEN 4830<br />#define RNG 100032<br /><br />unsigned base[MAX/64], segment[RNG/64], primes[LEN];<br /><br />#define sq(x) ((x)*(x))<br />#define mset(x,v) memset(x,v,sizeof(x))<br />#define chkC(x,n) (x[n&gt;&gt;6]&(1&lt;&lt;((n&gt;&gt;1)&31)))<br />#define setC(x,n) (x[n&gt;&gt;6]|=(1&lt;&lt;((n&gt;&gt;1)&31)))<br /><br />/* Generates all the necessary prime numbers and marks them in base[]*/<br />void sieve()<br />{<br />    unsigned i, j, k;<br />    for(i=3; i&lt;LMT; i+=2)<br />        if(!chkC(base, i))<br />            for(j=i*i, k=i&lt;&lt;1; j&lt;MAX; j+=k)<br />                setC(base, j);<br />    for(i=3, j=0; i&lt;MAX; i+=2)<br />        if(!chkC(base, i))<br />            primes[j++] = i;<br />}<br /><br />/* Returns the prime-count within range [a,b] and marks them in segment[] */<br />int segmented_sieve(int a, int b)<br />{<br />    unsigned i, j, k, cnt = (a&lt;=2 && 2&lt;=b)? 1 : 0;<br />    if(b&lt;2) return 0;<br />    if(a&lt;3) a = 3;<br />    if(a%2==0) a++;<br />    mset(segment,0);<br />    for(i=0; sq(primes[i])&lt;=b; i++)<br />    {<br />        j = primes[i] * ( (a+primes[i]-1) / primes[i] );<br />        if(j%2==0) j += primes[i];<br />        for(k=primes[i]&lt;&lt;1; j&lt;=b; j+=k)<br />            if(j!=primes[i])<br />                setC(segment, (j-a));<br />    }<br />    for(i=0; i&lt;=b-a; i+=2)<br />        if(!chkC(segment, i))<br />            cnt++;<br />    return cnt;<br />}<br /></pre><div style="text-align: justify;"><br /><p>This is a sample program which demonstrates segmented sieve. Very fast and memory efficient version. 'base' is the array which holds the flags for all the primes upto &radic;(2<sup>31</sup>-1), i.e. the square-root of the max limit, and all the primes are stored in the 'primes' array. Later, these primes are used to determine whether a number is a composite or not within a certain range in the segmented sieve. To avoid overflow and sign bit problems, unsigned type is used.</p><br /><h3>A little explanation:</h3><br /><p>First of what what these macros mean?<br />#define MAX 46656<br />#define LMT 216<br />#define LEN 4830<br />#define RNG 100032<br /><br /><b>MAX</b> is the sqrt of maximum possible input, in case of here, the maximum is integer range sqrt of which is almost MAX used here. So, MAX is not maximum allowed input, it is just sqrt of maximum input which is pretty big as 2147483647 i.e. 32 bit signed integer maximum.<br /><b>LMT</b> is sqrt of MAX. We all know, we run sieve upto sqrt MAX<br /><b>LEN</b> is the maximum possible different primes that can be stored using this algorithm with specific range defined as <b>RNG</b>, on which the segmented sieve will run and collect the primes out of it.<br /><br />Now the next two vital macros:<br />#define chkC(x,n) (x[n&gt;&gt;6]&(1&lt;&lt;((n&gt;&gt;1)&31)))<br />#define setC(x,n) (x[n&gt;&gt;6]|=(1&lt;&lt;((n&gt;&gt;1)&31)))<br />And why we divide by 64:<br /><br />Ok, yes, it is clearly bit shifting. But you must know what we do in bitwise sieve first in order to get this. Instead of using a whole array position to store just one flag, we can use its each 32 bits to store one flag, which saves memory by a factor 1/32. So its very logical to capture memory upto MAX/32, but why MAX/64 and RNG/64 here?<br />Because, we really have no point of handling the even number as 2 is the only even prime and we can handle it manually, without any stress. So, if we do not consider the even numbers at all, the total numbers are again reduced by a factor 1/2, isn't it? So what we get total is MAX/32/2 = MAX/64, same for RNG.<br /><br />Now, the two macros chkC and setC is pretty straight forward. chkC checks if a specific bitflag is 1 or 0, and setC sets a specific bitflag 1 to mark it as a composite. They work similarly, so I will explain only the chkC part.<br /><br />In bitwise sieve, where is a specific value n located? Obviously (n/32)<sup>th</sup> index, and on that index, (n%32)<sup>th</sup> bit from LSB (right hand side). But we just said before, we are interested with only odd numbers, so we map n with n/2 as follows:<br /><pre class="brush: plain; gutter: false"><br />Actual numbers<br /> 1   2   3   4   5   6   7   8   9 ...........   n     ;[n is odd]<br /> |   |   |   |   |   |   |   |   | ...........   |<br /> 0   x   1   x   2   x   3   x   4 ........... (n/2)<br />Position on which they are represented in the bitstrings.<br /></pre><br />So, n is actually n/2, which implies the previous statement: n's (actually n/2 's) position is in index [n/2/32] = [n/64] = [n>>6] and on the bit position (n/2)%32 = (n>>1)&31 ;[ We know, modding with a power of 2 is same as ANDing with (same power of 2)-1 ]. The rest is, how we check / set this specific bit. I have another post explaining these operations: <a href="http://zobayer.blogspot.com/2009/12/bitwise-operations-in-c-part-3.html" target="_blank">Bitwise operations in C: Part 3</a>, and obviously you can google it :)<br /></p><br /></div>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>Zobayer Hasan</span>
+</span>
+<span class='post-timestamp'>
+at
+<a class='timestamp-link' href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html' rel='bookmark' title='permanent link'><abbr class='published' title='2009-09-14T01:59:00+07:00'>1:59 AM</abbr></a>
+</span>
+<span class='post-comment-link'>
+</span>
+<span class='post-icons'>
+<span class='item-control blog-admin pid-1570517686'>
+<a href='http://www.blogger.com/post-edit.g?blogID=3675582796619590206&postID=8410090690257841945' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://img2.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'></div>
+<div class='post-footer-line post-footer-line-3'><span class='reaction-buttons'>
+<table border='0' cellpadding='0' cellspacing='0' width='100%'><tr>
+<td class='reactions-label-cell' nowrap='nowrap' valign='top' width='1%'>
+<span class='reactions-label'>
+Reactions:</span>&#160;</td>
+<td><iframe allowtransparency='true' class='reactions-iframe' frameborder='0' name='reactions' scrolling='no' src='http://www.blogger.com/blog-post-reactions.g?options=%5Bfunny%2C+interesting%2C+cool%2C+rubbish%5D&amp;textColor=%23333333#http://zobayer.blogspot.com/2009/09/segmented-sieve.html'></iframe></td>
+</tr></table>
+</span>
+</div>
+</div>
+</div>
+<div class='comments' id='comments'>
+<a name='comments'></a>
+<h4>
+3
+comments:
+        
+</h4>
+<div class='pid-1570517686' id='Blog1_comments-block-wrapper'>
+<dl class='avatar-comment-indent' id='comments-block'>
+<dt class='comment-author ' id='c7475843345876713576'>
+<a name='c7475843345876713576'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="http://www.blogger.com/profile/17277341871167086172" rel="nofollow" onclick="" class="avatar-hovercard" id="av-0-17277341871167086172"><img src="http://www.blogger.com/img/b16-rounded.gif" width="16" height="16" alt="" title="fushar">
+
+</a></span></div>
+<a href='http://www.blogger.com/profile/17277341871167086172' rel='nofollow'>fushar</a>
+said...
+</dt>
+<dd class='comment-body pid-1470997912' id='Blog1_cmt-7475843345876713576'>
+<p>
+Thanks! After reading this article I managed to get AC on SPOJ&#39;s PRIME1.
+<span class='interaction-iframe-guide'></span>
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html?showComment=1254022960151#c7475843345876713576' title='comment permalink'>
+September 27, 2009 10:42 AM
+</a>
+<span class='item-control blog-admin pid-1470997912'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=3675582796619590206&postID=7475843345876713576' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c7621148581342252832'>
+<a name='c7621148581342252832'></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="http://www.blogger.com/profile/10942756488336209340" rel="nofollow" onclick="" class="avatar-hovercard" id="av-1-10942756488336209340"><img src="http://www.blogger.com/img/b16-rounded.gif" width="16" height="16" alt="" title="Arun Chauhan">
+
+</a></span></div>
+<a href='http://www.blogger.com/profile/10942756488336209340' rel='nofollow'>Arun Chauhan</a>
+said...
+</dt>
+<dd class='comment-body pid-1407835940' id='Blog1_cmt-7621148581342252832'>
+<p>
+great code dude...<br />but i have some problems understanding it.... <br />if you don&#39;t mind can you explain me.... some of the following things.... <br />i want help in understanding the <br />#define chkC(x,n) (x[n&gt;&gt;6]&amp;(1&lt;&lt;((n&gt;&gt;1)&amp;31)))<br />#define setC(x,n) (x[n&gt;&gt;6]|=(1&lt;&lt;((n&gt;&gt;1)&amp;31)))<br /><br />i know they are using bitshift and operators..... but what exactly they are trying to do can <br />somebody make me understand.... why is it needed to divide n by 64 and why are they ANDing (n/2) with 31..... and why MAX=46656 and  RNG=100032 and LEN=4830....<br />LMT is ok b&#39;cos it&#39;s sqrt(MAX)<br /><br />thanx in advance....
+<span class='interaction-iframe-guide'></span>
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html?showComment=1262890121634#c7621148581342252832' title='comment permalink'>
+January 8, 2010 12:48 AM
+</a>
+<span class='item-control blog-admin pid-1407835940'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=3675582796619590206&postID=7621148581342252832' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author ' id='c3396046246083652906'>
+<a name='c3396046246083652906'></a>
+<div class="avatar-image-container vcard"><span dir="ltr"><a href="http://www.blogger.com/profile/10946508827987290398" rel="nofollow" onclick="" class="avatar-hovercard" id="av-2-10946508827987290398"><img src="http://www.blogger.com/img/blank.gif" width="35" height="35" alt="" class="delayLoad" style="display: none;" longdesc="http://1.bp.blogspot.com/_HQySHsSzRSI/SlD8qVftLnI/AAAAAAAAAAk/iIQ-Oxn2n1U/S45/Profile.png" title="Zobayer Hasan">
+
+<noscript><img src="http://1.bp.blogspot.com/_HQySHsSzRSI/SlD8qVftLnI/AAAAAAAAAAk/iIQ-Oxn2n1U/S45/Profile.png" width="35" height="35" class="photo" alt=""></noscript></a></span></div>
+<a href='http://www.blogger.com/profile/10946508827987290398' rel='nofollow'>Zobayer Hasan</a>
+said...
+</dt>
+<dd class='comment-body pid-1570517686' id='Blog1_cmt-3396046246083652906'>
+<p>
+@Arun, I have added the description for the macros. I think you already got it as 1 and a half months passed and I was really busy. :(
+<span class='interaction-iframe-guide'></span>
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html?showComment=1268160283218#c3396046246083652906' title='comment permalink'>
+March 10, 2010 12:44 AM
+</a>
+<span class='item-control blog-admin pid-1570517686'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=3675582796619590206&postID=3396046246083652906' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+</dl>
+</div>
+<p class='comment-footer'>
+<div class='comment-form'>
+<a name='comment-form'></a>
+<h4 id='comment-post-message'>Post a Comment</h4>
+<p>
+</p>
+<a href='http://www.blogger.com/comment-iframe.g?blogID=3675582796619590206&postID=8410090690257841945' id='comment-editor-src'></a>
+<iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' width='100%'></iframe>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<script type="text/javascript" src="http://www.blogger.com/static/v1/jsbin/2687608391-comment_from_post_iframe.js"></script>
+<script type='text/javascript'>
+      BLOG_CMT_createIframe('http://www.blogger.com/rpc_relay.html', '16702298614526300745');
+    </script>
+</div>
+</p>
+<div id='backlinks-container'>
+<div id='Blog1_backlinks-container'>
+</div>
+</div>
+</div>
+</div>
+<div id="latency-8410090690257841945"></div><script type="text/javascript">if (window['tickAboveFold']) {window['tickAboveFold'](document.getElementById("latency-8410090690257841945")); } </script>
+
+      </div></div>
+    
+<!-- google_ad_section_end -->
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-newer-link'>
+<a class='blog-pager-newer-link' href='http://zobayer.blogspot.com/2009/09/spoj-solve-list-comparison-tool.html' id='Blog1_blog-pager-newer-link' title='Newer Post'>Newer Post</a>
+</span>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href='http://zobayer.blogspot.com/2009/08/calculate-ncr-using-dp.html' id='Blog1_blog-pager-older-link' title='Older Post'>Older Post</a>
+</span>
+<a class='home-link' href='http://zobayer.blogspot.com/'>Home</a>
+</div>
+<div class='clear'></div>
+<div class='post-feeds'>
+<div class='feed-links'>
+Subscribe to:
+<a class='feed-link' href='http://zobayer.blogspot.com/feeds/8410090690257841945/comments/default' target='_blank' type='application/atom+xml'>Post Comments (Atom)</a>
+</div>
+</div>
+</div><div class='widget Gadget' id='Gadget4'>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-hayl8pouym3l" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "200";
+    skin['TITLE'] = "";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#333333";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#333333";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "normal normal 107% Arial, sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderOpenSocialGadget"](
+    {id: "div-hayl8pouym3l",
+     height: 200,
+     
+       url: "http://efocus.pl/blogger/xml/podzielsie.xml",
+     
+     
+       "view-params": {"orientation":"poziomo","technorati":true,"digg":true,"reddit":true,"blip":true,"wykop":true,"flaker":true,"delicious":true,"googlebuzz":true,"googlebookmarks":true,"twitter":true,"stumbleupon":true,"develway":true,"facebook":true,"pinger":true},
+     
+     
+       "prefs": {"orientation":"poziomo","technorati":"1","digg":"1","reddit":"1","blip":"1","wykop":"1","flaker":"1","delicious":"1","googlebuzz":"1","googlebookmarks":"1","twitter":"1","stumbleupon":"1","develway":"1","facebook":"1","pinger":"1"},
+     
+     site: "16702298614526300745",
+      
+     locale: 'en' },
+     skin);
+  </script>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Gadget&widgetId=Gadget4&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Gadget4"));' target='configGadget4' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget BloggerButton' id='BloggerButton2'>
+<div class='widget-content'>
+<a href='http://www.blogger.com'><img alt='Powered By Blogger' src='http://www.blogger.com/buttons/blogger-simple-kahki.gif'/></a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=BloggerButton&widgetId=BloggerButton2&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("BloggerButton2"));' target='configBloggerButton2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</div>
+<div id='sidebar-wrapper'>
+<div class='sidebar section' id='sidebar'><div class='widget Profile' id='Profile1'>
+<h2>About Me</h2>
+<div class='widget-content'>
+<a href='http://www.blogger.com/profile/10946508827987290398'><img alt='My Photo' class='profile-img' height='80' src='http://2.bp.blogspot.com/_HQySHsSzRSI/SlD8c894XqI/AAAAAAAAAAM/tW1moYcYQV8/S220/Profile.png' width='67'/></a>
+<dl class='profile-datablock'>
+<dt class='profile-data'>Zobayer Hasan</dt>
+<dd class='profile-data'>Dhaka, Bangladesh</dd>
+<dd class='profile-textblock'>Undergraduate Student<br>School: CSE-DU<br><br>Here, I&#39;ll share my day to day learning mostly related to programming and my studies.</dd>
+</dl>
+<a class='profile-link' href='http://www.blogger.com/profile/10946508827987290398'>View my complete profile</a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Profile&widgetId=Profile1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' target='configProfile1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Gadget' id='Gadget2'>
+<div class='widget-content'>
+<script type="text/javascript">
+        if (!window.gadgets || !gadgets.rpc) {
+          document.write('<script type="text/javascript"' +
+                  'src="//www.blogger.gmodules.com/gadgets/js/rpc.js?v\x3d880531f975caa378b53066fa09fa5fef\x26container\x3dblogger\x26nocache\x3d0\x26debug\x3d0\x26c\x3d1">' +
+                  '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<iframe src="//www.blogger.gmodules.com/gadgets/ifr?v=fdb2b406636e1f3cff1c5d7e660f59eb&amp;container=blogger&amp;view=default&amp;lang=en&amp;url=http%3A%2F%2Fwww.getrank.org%2Ffiles%2Ftwitter%2Ftwitter.xml&amp;country=ALL&amp;libs=com.google.gadgets.analytics%3Acore%3Adynamic-height%3Askins&amp;parent=http%3A%2F%2Fzobayer.blogspot.com%2F&amp;up_twitterid=zobayer2010&amp;up_style=1&amp;mid=2#up_style=1&amp;up_twitterid=zobayer2010&amp;st=e%3DAFlCd0Ww7YNPlYNN1LcwZEH9zjvjp8%252F15ylNOilPQ7IfmIWVHFwz5IlrrAPFoUhLUQzlv88lK17HVQnOWYNCwwNP%252Fn%252F1oreKj%252FEAGOiHae3vcqZ7w7gJqcCoijpd%252B%252B0c3k00nCQioLZ%252F%26c%3Dblogger&amp;rpctoken=-8012043770731178833" frameborder="0" style="width: 100%; display: block" height="200" id="sidebar-gadget2" name="sidebar-gadget2"></iframe>
+<script type="text/javascript">
+        gadgets.rpc.setRelayUrl("sidebar-gadget2", '//www.blogger.gmodules.com/gadgets/files/container/rpc_relay.html');
+        gadgets.rpc.setAuthToken("sidebar-gadget2", "-8012043770731178833");
+      </script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Gadget&widgetId=Gadget2&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Gadget2"));' target='configGadget2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Gadget' id='Gadget3'>
+<h2 class='title'>Share This Blog</h2>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-1oemtchtdw0o1" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "200";
+    skin['TITLE'] = "Share This Blog";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#333333";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#333333";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "normal normal 107% Arial, sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderOpenSocialGadget"](
+    {id: "div-1oemtchtdw0o1",
+     height: 200,
+     
+       url: "http://efocus.pl/blogger/xml/podzielsie.xml",
+     
+     
+       "view-params": {"orientation":"poziomo","technorati":true,"digg":true,"reddit":true,"blip":true,"wykop":true,"flaker":true,"delicious":true,"googlebuzz":true,"googlebookmarks":true,"twitter":true,"stumbleupon":true,"develway":true,"facebook":true,"pinger":true},
+     
+     
+       "prefs": {"orientation":"poziomo","technorati":"1","digg":"1","reddit":"1","blip":"1","wykop":"1","flaker":"1","delicious":"1","googlebuzz":"1","googlebookmarks":"1","twitter":"1","stumbleupon":"1","develway":"1","facebook":"1","pinger":"1"},
+     
+     site: "16702298614526300745",
+      
+     locale: 'en' },
+     skin);
+  </script>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Gadget&widgetId=Gadget3&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Gadget3"));' target='configGadget3' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget BlogArchive' id='BlogArchive1'>
+<h2>Blog Archive</h2>
+<div class='widget-content'>
+<div id='ArchiveList'>
+<div id='BlogArchive1_ArchiveList'>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/search?updated-min=2010-01-01T00%3A00%3A00%2B06%3A00&updated-max=2011-01-01T00%3A00%3A00%2B06%3A00&max-results=19'>2010</a>
+<span class='post-count' dir='ltr'>(19)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2010_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(2)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2010/06/brainfk-c.html'>BrainF**k &amp; C++</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/06/euler-tour.html'>Euler Tour</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2010_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(5)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2010/05/maximum-flow-dinitz-algorithm.html'>MaxFlow :: Dinitz Algorithm</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/05/c-fun-get-variables-name.html'>C++ :: Get Variable&#39;s Name</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/05/maximum-matching-with-dfs.html'>Maximum Matching (DFS)</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/05/expression-evaluation.html'>Expression Evaluation</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/05/maximum-matching.html'>Maximum Matching (Hopcroft)</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2010_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(5)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2010/03/uva-and-spoj-problem-locator.html'>UVa, SPOJ &amp; TopCoder</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/03/small-bigint-library.html'>Bigint Library by Jan vai</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/03/blog-post.html'>FIFA World Cup 2010</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/03/blogger-code-formatter.html'>Blogger Code Formatter</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/03/testing-bipartite-graph.html'>Testing Bipartite Graph</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2010_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(4)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2010/02/convex-hull.html'>Convex Hull</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/02/cc-array-of-functions.html'>C/C++ Array of Functions</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/02/primitive-root.html'>Primitive Root</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/02/confidence-trust-and-hope.html'>Confidence, Trust and Hope</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2010_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(3)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2010/01/syntaxhighlighter-for-blogger.html'>SyntaxHighlighter for Blogger</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/01/kruskals-algorithm-in-c.html'>Kruskal&#39;s Algorithm in C++</a></li>
+<li><a href='http://zobayer.blogspot.com/2010/01/online-compiler-interpreter.html'>Online Compiler / Interpreter</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>&#9660;&#160;</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/search?updated-min=2009-01-01T00%3A00%3A00%2B06%3A00&updated-max=2010-01-01T00%3A00%3A00%2B06%3A00&max-results=27'>2009</a>
+<span class='post-count' dir='ltr'>(27)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(11)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/12/happy-new-year.html'>Happy New Year....</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/dijkstras-algorithm-in-c.html'>Dijkstra&#39;s Algorithm in C++</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/cse-102-linked-list-in-c.html'>Linked List in C</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/bitwise-operations-in-c-part-3.html'>Bitwise operations in C: Part 3</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/bitwise-operations-in-c-part-2.html'>Bitwise operations in C: Part 2</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/bitwise-operations-in-cc-part-1.html'>Bitwise operations in C: Part 1</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/power-series-evaluation.html'>Power Series Evaluation</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/gaussjordan-elimination.html'>Gauss&#8211;Jordan Elimination</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/cse-102-attacking-recursion.html'>Attacking Recursions</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/drawing-regular-pentagon.html'>Drawing Regular n-gon</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/12/cse-102-practice-recursions.html'>Practice Recursions</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(4)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/11/volume-of-irregular-tetrahedron.html'>Volume of an irregular tetrahedron</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/11/c-template.html'>C++ Template</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/11/geometry-segment-circle-intersection.html'>Segment-Circle Intersection</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/11/spoj-hints.html'>SPOJ Hints</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/10/linux-bash-script-shell-script.html'>Linux : Bash Script (Shell Script)</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>&#9660;&#160;</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(2)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/09/spoj-solve-list-comparison-tool.html'>SPOJ Solve list comparison tool</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/09/segmented-sieve.html'>Segmented Sieve</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/08/calculate-ncr-using-dp.html'>Calculate nCr using dp technique</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://zobayer.blogspot.com/2009_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(8)</span>
+<ul class='posts'>
+<li><a href='http://zobayer.blogspot.com/2009/07/extended-euclidean-algorithm.html'>Extended Euclidean Algorithm</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/greatest-impossible-score-in-game.html'>Largest impossible score</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/binary-gcd-algorithm.html'>Binary GCD algorithm</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/craziest-programming-language.html'>Craziest  Language Ever !!!</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/factorial.html'>Factorial of negative number</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/solve-problems-at-uva-online-judge.html'>Easy problems at UVA OJ</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/negative-base-number-system_05.html'>Negative Base Number System</a></li>
+<li><a href='http://zobayer.blogspot.com/2009/07/proof-099999999999999-1.html'>0.99999999................... = 1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target='configBlogArchive1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Label' id='Label1'>
+<h2>Catagories</h2>
+<div class='widget-content cloud-label-widget-content'>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/academic%20study'>academic study</a>
+<span class='label-count' dir='ltr'>(8)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/algorithm'>algorithm</a>
+<span class='label-count' dir='ltr'>(19)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bash'>bash</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/beginner'>beginner</a>
+<span class='label-count' dir='ltr'>(17)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bfs'>bfs</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bigint'>bigint</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bitwise'>bitwise</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/blogger'>blogger</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bpm'>bpm</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/brainfuck'>brainfuck</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/c%2B%2B'>c++</a>
+<span class='label-count' dir='ltr'>(26)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/combinatorics'>combinatorics</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/comparator'>comparator</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/computational%20geometry'>computational geometry</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/contest'>contest</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/data%20structure'>data structure</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/dp'>dp</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/dynamic%20programming'>dynamic programming</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/esoteric%20language'>esoteric language</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/euler%20circuit'>euler circuit</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/euler%20path'>euler path</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/expression%20evaluation'>expression evaluation</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/extended%20euclid'>extended euclid</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/funny'>funny</a>
+<span class='label-count' dir='ltr'>(11)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/gcd'>gcd</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/geometry'>geometry</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/graph'>graph</a>
+<span class='label-count' dir='ltr'>(7)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/hints'>hints</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/hopcroft%20karp'>hopcroft karp</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/java'>java</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/javascript'>javascript</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/linear%20algebra'>linear algebra</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/linux'>linux</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/math'>math</a>
+<span class='label-count' dir='ltr'>(13)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maxflow'>maxflow</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maximum%20bipartite%20matching'>maximum bipartite matching</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maximum%20flow'>maximum flow</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/modular%20arithmatic'>modular arithmatic</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/number%20system'>number system</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/number%20theory'>number theory</a>
+<span class='label-count' dir='ltr'>(7)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/online%20judge'>online judge</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/other'>other</a>
+<span class='label-count' dir='ltr'>(6)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/primes'>primes</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/problem%20solving'>problem solving</a>
+<span class='label-count' dir='ltr'>(23)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/programming'>programming</a>
+<span class='label-count' dir='ltr'>(34)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/python'>python</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/recursion'>recursion</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/shell%20script'>shell script</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/sieve'>sieve</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/sphere%20online%20judge'>sphere online judge</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/spoj'>spoj</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/syntax%20highlighting'>syntax highlighting</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/tc'>tc</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/template'>template</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/topcoder'>topcoder</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/uva'>uva</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/uva%20online%20judge'>uva online judge</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Label&widgetId=Label1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Label1"));' target='configLabel1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget HTML' id='HTML1'>
+<h2 class='title'>Blog Hits</h2>
+<div class='widget-content'>
+<script src="http://scripts.widgethost.com/pax/tabs.js?tabs=tabs-ulxjl88v" defer></script>
+
+<a href="http://www.pax.com/free-counters.html"><img border="0" alt="Free Hit Counter" src="http://counter.pax.com/counter/image?counter=ctr-1yzdwxy271"/></a><br/>
+<b>Since 01/01/2010</b>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=HTML&widgetId=HTML1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target='configHTML1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Followers' id='Followers1'>
+<h2 class='title'>Followers</h2>
+<div class='widget-content'>
+<div id='Followers1-wrapper'>
+<div style='margin-right:2px;'>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-gtfgrjk93gti" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "260";
+    skin['TITLE'] = "Followers";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#333333";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#333333";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "normal normal 107% Arial, sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderMembersGadget"](
+    {id: "div-gtfgrjk93gti",
+     height: 260,
+     
+     
+     
+     site: "16702298614526300745",
+      
+     locale: 'en' },
+     skin);
+  </script>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Followers&widgetId=Followers1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Followers1"));' target='configFollowers1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Subscribe' id='Subscribe1'>
+<div style='white-space:nowrap'>
+<h2 class='title'>Subscribe</h2>
+<div class='widget-content'>
+<div class='subscribe-wrapper subscribe-type-POST'>
+<div class='subscribe expanded subscribe-type-POST' id='SW_READER_LIST_Subscribe1POST' style='display:none;'>
+<div class='top'>
+<span class='inner' onclick='return(_SW_toggleReaderList(event, "Subscribe1POST"));'>
+<img class='subscribe-dropdown-arrow' src='http://www.blogger.com/img/widgets/arrow_dropdown.gif'/>
+<img align='absmiddle' alt='' border='0' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+Posts
+</span>
+<div class='feed-reader-links'>
+<a class='feed-reader-link' href='http://www.google.com/ig/add?source=bstp&feedurl=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2Fposts%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-google.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.bloglines.com/sub/http://zobayer.blogspot.com/feeds/posts/default' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-bloglines.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2Fposts%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-netvibes.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2Fposts%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-newsgator.png'/>
+</a>
+<a class='feed-reader-link' href='http://add.my.yahoo.com/content?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2Fposts%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-yahoo.png'/>
+</a>
+<a class='feed-reader-link' href='http://zobayer.blogspot.com/feeds/posts/default' target='_blank'>
+<img align='absmiddle' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+                Atom
+              </a>
+</div>
+</div>
+<div class='bottom'></div>
+</div>
+<div class='subscribe' id='SW_READER_LIST_CLOSED_Subscribe1POST' onclick='return(_SW_toggleReaderList(event, "Subscribe1POST"));'>
+<div class='top'>
+<span class='inner'>
+<img class='subscribe-dropdown-arrow' src='http://www.blogger.com/img/widgets/arrow_dropdown.gif'/>
+<span onclick='return(_SW_toggleReaderList(event, "Subscribe1POST"));'>
+<img align='absmiddle' alt='' border='0' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+Posts
+</span>
+</span>
+</div>
+<div class='bottom'></div>
+</div>
+</div>
+<div class='subscribe-wrapper subscribe-type-PER_POST'>
+<div class='subscribe expanded subscribe-type-PER_POST' id='SW_READER_LIST_Subscribe1PER_POST' style='display:none;'>
+<div class='top'>
+<span class='inner' onclick='return(_SW_toggleReaderList(event, "Subscribe1PER_POST"));'>
+<img class='subscribe-dropdown-arrow' src='http://www.blogger.com/img/widgets/arrow_dropdown.gif'/>
+<img align='absmiddle' alt='' border='0' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+Comments
+</span>
+<div class='feed-reader-links'>
+<a class='feed-reader-link' href='http://www.google.com/ig/add?source=bstp&feedurl=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2F8410090690257841945%2Fcomments%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-google.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.bloglines.com/sub/http://zobayer.blogspot.com/feeds/8410090690257841945/comments/default' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-bloglines.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2F8410090690257841945%2Fcomments%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-netvibes.png'/>
+</a>
+<a class='feed-reader-link' href='http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2F8410090690257841945%2Fcomments%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-newsgator.png'/>
+</a>
+<a class='feed-reader-link' href='http://add.my.yahoo.com/content?url=http%3A%2F%2Fzobayer.blogspot.com%2Ffeeds%2F8410090690257841945%2Fcomments%2Fdefault' target='_blank'>
+<img src='http://www.blogger.com/img/widgets/subscribe-yahoo.png'/>
+</a>
+<a class='feed-reader-link' href='http://zobayer.blogspot.com/feeds/8410090690257841945/comments/default' target='_blank'>
+<img align='absmiddle' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+                Atom
+              </a>
+</div>
+</div>
+<div class='bottom'></div>
+</div>
+<div class='subscribe' id='SW_READER_LIST_CLOSED_Subscribe1PER_POST' onclick='return(_SW_toggleReaderList(event, "Subscribe1PER_POST"));'>
+<div class='top'>
+<span class='inner'>
+<img class='subscribe-dropdown-arrow' src='http://www.blogger.com/img/widgets/arrow_dropdown.gif'/>
+<span onclick='return(_SW_toggleReaderList(event, "Subscribe1PER_POST"));'>
+<img align='absmiddle' alt='' border='0' class='feed-icon' src='http://www.blogger.com/img/icon_feed12.png'/>
+Comments
+</span>
+</span>
+</div>
+<div class='bottom'></div>
+</div>
+</div>
+<div style='clear:both'></div>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Subscribe&widgetId=Subscribe1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Subscribe1"));' target='configSubscribe1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget LinkList' id='LinkList1'>
+<h2>Favourite Links</h2>
+<div class='widget-content'>
+<ul>
+<li><a href='http://mathforum.org/dr.math/'>Ask Dr. Math</a></li>
+<li><a href='http://www.lordalcol.com/brainfuckjs/'>Brainfuck Interpreter</a></li>
+<li><a href='http://cplusplus.com/reference/'>C++ Reference</a></li>
+<li><a href='http://codepad.org/'>Code Pad</a></li>
+<li><a href='http://www.codeproject.com/'>Code Project</a></li>
+<li><a href='http://sps.nus.edu.sg/~limchuwe/cgt/'>Combinatorial Games</a></li>
+<li><a href='http://www.cse.univdhaka.edu/~cse304/'>CSE DU Algorithm</a></li>
+<li><a href='http://smilitude.googlepages.com/'>Fahim's Page</a></li>
+<li><a href='http://www.filehippo.com/'>Filehippo Software</a></li>
+<li><a href='http://www.flazx.com/'>FlazX IT Books</a></li>
+<li><a href='http://www.ideone.com/'>IDEONE mega compiler</a></li>
+<li><a href='http://algorithmics.comp.nus.edu.sg/wiki/training/ioi_workshop'>IOI Workshop</a></li>
+<li><a href='http://www.java2s.com/'>Java2 School</a></li>
+<li><a href='http://ocw.mit.edu/OcwWeb/Electrical-Engineering-and-Computer-Science/index.htm'>MIT OCW (EE & CS)</a></li>
+<li><a href='http://felix-halim.net/uva/hunting.php?id=21614&update=Update'>My UVA Stistics</a></li>
+<li><a href='http://pastebin.com/'>Paste Bin</a></li>
+<li><a href='http://www.personal.kent.edu/~rmuhamma/Algorithms/algorithm.html'>Personal Kent Algo</a></li>
+<li><a href='http://www.research.att.com/~njas/sequences/'>Search in OEIS</a></li>
+<li><a href='http://www.spoj.pl/'>Sphere Online Judge</a></li>
+<li><a href='https://www.otinn.com/'>TC & SPOJ comparator</a></li>
+<li><a href='http://www.topcoder.com/tc?module=Static&d1=tutorials&d2=alg_index'>Topcoder Tutorials</a></li>
+<li><a href='http://ace.delos.com/usacogate'>USACO Training</a></li>
+<li><a href='http://online-judge.uva.es/board'>UVA Electronic Board</a></li>
+<li><a href='http://uva.onlinejudge.org/'>UVA Online Judge</a></li>
+<li><a href='http://www.uvatoolkit.com/problemssolve.php'>UVA Toolkit</a></li>
+<li><a href='http://www.w3schools.com/'>W3 Schools</a></li>
+<li><a href='http://en.wikipedia.org/wiki/Main_Page'>Wikipedia (English)</a></li>
+<li><a href='http://www.comp.nus.edu.sg/~stevenha/'>World of Seven</a></li>
+</ul>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=LinkList&widgetId=LinkList1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' target='configLinkList1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Gadget' id='Gadget1'>
+<h2 class='title'>Recent Comments</h2>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 8410090690257841945
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/3675582796619590206/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/3675582796619590206/comments/default";
+          
+          holder.currentBlogUrl = "http://zobayer.blogspot.com/";
+          holder.currentBlogId = "3675582796619590206";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-1ktqqqurk4d0r" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "200";
+    skin['TITLE'] = "Recent Comments";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#333333";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#333333";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "normal normal 107% Arial, sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderOpenSocialGadget"](
+    {id: "div-1ktqqqurk4d0r",
+     height: 200,
+     
+       url: "http://gadgetsforblogger.googlecode.com/files/recent-comments-gadget.xml",
+     
+     
+       "view-params": {"summaryLength":"200","numberOfPosts":"5"},
+     
+     
+       "prefs": {"summaryLength":"200","numberOfPosts":"5"},
+     
+     site: "16702298614526300745",
+      
+     locale: 'en' },
+     skin);
+  </script>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Gadget&widgetId=Gadget1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Gadget1"));' target='configGadget1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget BloggerButton' id='BloggerButton1'>
+<div class='widget-content'>
+<a href='http://www.blogger.com'><img alt='Powered By Blogger' src='http://www.blogger.com/buttons/blogger-simple-kahki.gif'/></a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=BloggerButton&widgetId=BloggerButton1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("BloggerButton1"));' target='configBloggerButton1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class='clear'>&#160;</div>
+</div>
+<!-- end content-wrapper -->
+<div id='footer-wrapper'>
+<div class='footer section' id='footer'><div class='widget Label' id='Label2'>
+<h2>Labels</h2>
+<div class='widget-content cloud-label-widget-content'>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/academic%20study'>academic study</a>
+<span class='label-count' dir='ltr'>(8)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/algorithm'>algorithm</a>
+<span class='label-count' dir='ltr'>(19)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bash'>bash</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/beginner'>beginner</a>
+<span class='label-count' dir='ltr'>(17)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bfs'>bfs</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bigint'>bigint</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bitwise'>bitwise</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/blogger'>blogger</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/bpm'>bpm</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/brainfuck'>brainfuck</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/c%2B%2B'>c++</a>
+<span class='label-count' dir='ltr'>(26)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/combinatorics'>combinatorics</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/comparator'>comparator</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/computational%20geometry'>computational geometry</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/contest'>contest</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/data%20structure'>data structure</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/dp'>dp</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/dynamic%20programming'>dynamic programming</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/esoteric%20language'>esoteric language</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/euler%20circuit'>euler circuit</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/euler%20path'>euler path</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/expression%20evaluation'>expression evaluation</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/extended%20euclid'>extended euclid</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/funny'>funny</a>
+<span class='label-count' dir='ltr'>(11)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/gcd'>gcd</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/geometry'>geometry</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/graph'>graph</a>
+<span class='label-count' dir='ltr'>(7)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/hints'>hints</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/hopcroft%20karp'>hopcroft karp</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/java'>java</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/javascript'>javascript</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/linear%20algebra'>linear algebra</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/linux'>linux</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-4'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/math'>math</a>
+<span class='label-count' dir='ltr'>(13)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maxflow'>maxflow</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maximum%20bipartite%20matching'>maximum bipartite matching</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/maximum%20flow'>maximum flow</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/modular%20arithmatic'>modular arithmatic</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/number%20system'>number system</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/number%20theory'>number theory</a>
+<span class='label-count' dir='ltr'>(7)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/online%20judge'>online judge</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/other'>other</a>
+<span class='label-count' dir='ltr'>(6)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/primes'>primes</a>
+<span class='label-count' dir='ltr'>(2)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/problem%20solving'>problem solving</a>
+<span class='label-count' dir='ltr'>(23)</span>
+</span>
+<span class='label-size label-size-5'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/programming'>programming</a>
+<span class='label-count' dir='ltr'>(34)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/python'>python</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/recursion'>recursion</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/shell%20script'>shell script</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/sieve'>sieve</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/sphere%20online%20judge'>sphere online judge</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-3'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/spoj'>spoj</a>
+<span class='label-count' dir='ltr'>(4)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/syntax%20highlighting'>syntax highlighting</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/tc'>tc</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/template'>template</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-1'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/topcoder'>topcoder</a>
+<span class='label-count' dir='ltr'>(1)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/uva'>uva</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<span class='label-size label-size-2'>
+<a dir='ltr' href='http://zobayer.blogspot.com/search/label/uva%20online%20judge'>uva online judge</a>
+<span class='label-count' dir='ltr'>(3)</span>
+</span>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Label&widgetId=Label2&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Label2"));' target='configLabel2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Text' id='Text2'>
+<h2 class='title'>Thanks for spending your time here...</h2>
+<div class='widget-content'>
+<span style="font-size:120%;">Please mail me to <b>zobayer1[at]gmail[dot]com</b> for sending any feedback or directly put as a comment, have a nice day!!!</span><br />
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=3675582796619590206&widgetType=Text&widgetId=Text2&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Text2"));' target='configText2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</script><script type="text/javascript" src="http://www.blogger.com/static/v1/widgets/2069236280-widgets.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { window['blogger_templates_experiment_id'] = "templatesV1";BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('http://www.blogger.com/rearrange?blogID=3675582796619590206', 'http://zobayer.blogspot.com/2009/09/segmented-sieve.html','3675582796619590206');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID=3675582796619590206', '2V1x_wFnkr1hxJTo5ElVzenKgrI:1280289168688');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'title': 'I, ME AND MYSELF !!!', 'pageType': 'item', 'url': 'http://zobayer.blogspot.com/2009/09/segmented-sieve.html', 'canonicalUrl': 'http://zobayer.blogspot.com/2009/09/segmented-sieve.html', 'homepageUrl': 'http://zobayer.blogspot.com/', 'enabledCommentProfileImages': true, 'searchLabel': '', 'searchQuery': '', 'pageName': 'Segmented Sieve', 'pageTitle': 'I, ME AND MYSELF !!!: Segmented Sieve', 'encoding': 'UTF-8', 'locale': 'en', 'isPrivate': false, 'isMobile': false, 'mobileClass': '', 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42I, ME AND MYSELF !!! - Atom\42 href\75\42http://zobayer.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42I, ME AND MYSELF !!! - RSS\42 href\75\42http://zobayer.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42I, ME AND MYSELF !!! - Atom\42 href\75\42http://www.blogger.com/feeds/3675582796619590206/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\0753675582796619590206\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42I, ME AND MYSELF !!! - Atom\42 href\75\42http://zobayer.blogspot.com/feeds/8410090690257841945/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'imageSrcTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var a\75window;function c(b){this.t\75{};this.tick\75function(d,i,e){e\75e?e:(new Date).getTime();this.t[d]\75[e,i]};this.tick(\42start\42,null,b)}var f\75new c;a.jstiming\75{Timer:c,load:f};try{var g\75null;if(a.chrome\46\46a.chrome.csi)g\75Math.floor(a.chrome.csi().pageT);if(g\75\75null)if(a.gtbExternal)g\75a.gtbExternal.pageT();if(g\75\75null)if(a.external)g\75a.external.pageT;if(g)a.jstiming.pt\75g}catch(h){};a.tickAboveFold\75function(b){b\75b;var d\0750;if(b.offsetParent){do d+\75b.offsetTop;while(b\75b.offsetParent)}b\75d;b\74\075750\46\46a.jstiming.load.tick(\42aft\42)};var j\75false;function k(){if(!j){j\75true;a.jstiming.load.tick(\42firstScrollTime\42)}}a.addEventListener?a.addEventListener(\42scroll\42,k,false):a.attachEvent(\42onscroll\42,k);\n })();\74/script\076'}}]);
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label2', 'footer', null, document.getElementById('Label2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_TextView', new _WidgetInfo('Text2', 'footer', null, document.getElementById('Text2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar', null, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_GadgetView', new _WidgetInfo('Gadget2', 'sidebar', null, document.getElementById('Gadget2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_GadgetView', new _WidgetInfo('Gadget3', 'sidebar', null, document.getElementById('Gadget3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'sidebar', null, document.getElementById('Label1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'sidebar', null, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers1', 'sidebar', null, document.getElementById('Followers1'), {'title': 'Followers', 'codeSnippet': '\74script type\75\42text/javascript\42\76\n        if (!window.google || !google.friendconnect) {\n          document.write(\47\74script type\75\42text/javascript\42\47 +\n              \47src\75\42http://www.google.com/friendconnect/script/friendconnect.js\42\76\47 +\n              \47\74/scr\47 + \47ipt\76\47);\n        }\n      \74/script\76\n\74script type\75\42text/javascript\42\76\n      if (!window.registeredBloggerCallbacks) {\n        window.registeredBloggerCallbacks \75 true;\n\n        \n\n        \n        gadgets.rpc.register(\47requestReload\47, function() {\n          document.location.reload();\n        });\n\n        \n        gadgets.rpc.register(\47requestSignOut\47, function(siteId) {\n          \n          google.friendconnect.container.openSocialSiteId \75 siteId;\n          google.friendconnect.requestSignOut();\n        });\n      }\n    \74/script\76\n\74script type\75\42text/javascript\42\76\n    \n    function registerGetBlogUrls() {\n      gadgets.rpc.register(\47getBlogUrls\47, function() {\n        var holder \75 {};\n        \n          \n            \n            \n              holder.currentPost \75 \42http://www.blogger.com/feeds/3675582796619590206/posts/default/8410090690257841945\42;\n            \n            \n            \n              holder.currentComments \75 \42http://www.blogger.com/feeds/3675582796619590206/8410090690257841945/comments/default\42;\n            \n            holder.currentPostUrl \75 \42\42;\n            holder.currentPostId \75 8410090690257841945\n          \n          \n          \n            holder.postFeed \75 \42http://www.blogger.com/feeds/3675582796619590206/posts/default\42;\n          \n          \n          \n            holder.commentFeed \75 \42http://www.blogger.com/feeds/3675582796619590206/comments/default\42;\n          \n          holder.currentBlogUrl \75 \42http://zobayer.blogspot.com/\42;\n          holder.currentBlogId \75 \0423675582796619590206\42;\n        \n        return holder;\n      });\n    }\n  \74/script\76\n\74script type\75\42text/javascript\42\76\n  if (!window.registeredCommonBloggerCallbacks) {\n    window.registeredCommonBloggerCallbacks \75 true;\n\n    gadgets.rpc.register(\47resize_iframe\47, function(height) {\n      var el \75 document.getElementById(this[\47f\47]);\n      if (el) {\n        el.style.height \75 height + \47px\47;\n      }\n    });\n\n    \n    gadgets.rpc.register(\47set_pref\47, function() {});\n\n    registerGetBlogUrls();\n  }\n  \74/script\76\n\74div id\75\42div-n5qq4j1hgrbg\42 style\75\42width: 100%; \42\76\74/div\76\n\74script type\75\42text/javascript\42\76\n    var skin \75 {};\n    skin[\47FACE_SIZE\47] \75 \04732\47;\n    skin[\47HEIGHT\47] \75 \042260\42;\n    skin[\47TITLE\47] \75 \42Followers\42;\n    skin[\47BORDER_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_TEXT_COLOR\47] \75 \42#333333\42;\n    skin[\47ENDCAP_LINK_COLOR\47] \75 \42#000000\42;\n    skin[\47ALTERNATE_BG_COLOR\47] \75 \42transparent\42;\n    \n    skin[\47CONTENT_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47CONTENT_LINK_COLOR\47] \75 \42#000000\42;\n    skin[\47CONTENT_TEXT_COLOR\47] \75 \42#333333\42;\n    skin[\47CONTENT_SECONDARY_LINK_COLOR\47] \75 \42#FFFFFF\42;\n    skin[\47CONTENT_SECONDARY_TEXT_COLOR\47] \75 \42#000000\42;\n    skin[\47CONTENT_HEADLINE_COLOR\47] \75 \42#000000\42;\n    skin[\47FONT_FACE\47] \75 \42normal normal 107% Arial, sans-serif\42;\n    google.friendconnect.container.setParentUrl(\42/\42);\n    google.friendconnect.container[\42renderMembersGadget\42](\n    {id: \42div-n5qq4j1hgrbg\42,\n     height: 260,\n     \n     \n     \n     site: \04216702298614526300745\42,\n      \n     locale: \47en\47 },\n     skin);\n  \74/script\076'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_SubscribeView', new _WidgetInfo('Subscribe1', 'sidebar', null, document.getElementById('Subscribe1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar', null, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_GadgetView', new _WidgetInfo('Gadget1', 'sidebar', null, document.getElementById('Gadget1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BloggerButtonView', new _WidgetInfo('BloggerButton1', 'sidebar', null, document.getElementById('BloggerButton1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_CustomSearchView', new _WidgetInfo('CustomSearch1', 'main', null, document.getElementById('CustomSearch1'), {'title': '', 'includeBlog': true, 'includePostLinks': true, 'includeWeb': true, 'linkLists': [{'id': 'LinkList1', 'title': 'Favourite Links'}], 'blogUrl': 'http://zobayer.blogspot.com/', 'loadingMsg': 'Loading...', 'thisBlogMsg': 'This Blog', 'linkedFromHereMsg': 'Linked From Here', 'theWebMsg': 'The Web', 'backgroundColor': '#ffffff', 'textColor': '#333333', 'dateColor': '#cc0000', 'linkColor': '#336699', 'urlColor': '#336699', 'visitedLinkColor': '#336699', 'borderColor': '#0066CC', 'activeBorderColor': '#e6e6e6'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'dynamicJsUrl': 'http://www.blogger.com/dyn-js/cmtinteraction.js?targetBlogId\0753675582796619590206', 'commentInteractionIframeUrl': 'http://www.blogger.com/comment-interaction-iframe.g?blogId\0753675582796619590206\46option\075', 'bloggerBaseUrl': 'http://www.blogger.com', 'blogspotBaseUrl': 'http://zobayer.blogspot.com/'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_GadgetView', new _WidgetInfo('Gadget4', 'main', null, document.getElementById('Gadget4'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BloggerButtonView', new _WidgetInfo('BloggerButton2', 'main', null, document.getElementById('BloggerButton2'), {}, 'displayModeFull'));
+</script>
+</body>
+<!-- SyntaxHighlighter source: http://alexgorbatchev.com/wiki/SyntaxHighlighter -->
+<!-- SyntaxHighlighter Embedding Begin -->
+<!-- SyntaxHighlighter core js files -->
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shLegacy.js' type='text/javascript'></script>
+<!-- -->
+<!-- SyntaxHighlighter brushes -->
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCSharp.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCss.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJava.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJavaFX.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPython.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPlain.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushVb.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPerl.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPhp.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushSql.js' type='text/javascript'></script>
+<!-- -->
+<!-- SyntaxHighlighter core style -->
+<link href='http://alexgorbatchev.com/pub/sh/current/styles/shCore.css' rel='stylesheet' type='text/css'/>
+<!-- -->
+<!-- SyntaxHighlighter theme -->
+<link href='http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/>
+<!-- -->
+<!-- SyntaxHighlighter main js -->
+<script type='text/javascript'>
+SyntaxHighlighter.config.bloggerMode = true;
+SyntaxHighlighter.config.clipboardSwf = 'http://alexgorbatchev.com/pub/sh/current/scripts/clipboard.swf';
+SyntaxHighlighter.config.tagName = 'pre';
+SyntaxHighlighter.defaults['wrap-lines'] = false;
+SyntaxHighlighter.defaults['ruler'] = true;
+SyntaxHighlighter.defaults['toolbar'] = true;
+SyntaxHighlighter.defaults['highlight'] = null;
+SyntaxHighlighter.all()
+</script>
+<!-- -->
+<!-- SyntaxHighlighter Embedding End -->
+</html>
